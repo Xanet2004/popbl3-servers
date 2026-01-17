@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f837576c3fab40c0",
+            "id": "a04f4331a8dbef2e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,21 +22,20 @@
             }
           },
           {
-            "id": "70c3b43455d5b498",
+            "id": "94d1b20a42613f0f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "windows/windows.md",
+                "file": "linux/debian/services/isc-dhcp/isc-dhcp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "windows"
+              "title": "isc-dhcp"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -48,6 +47,7 @@
       {
         "id": "a5f984716da4e94a",
         "type": "tabs",
+        "dimension": 54.02298850574713,
         "children": [
           {
             "id": "838fbad925de53bf",
@@ -90,10 +90,48 @@
             }
           }
         ]
+      },
+      {
+        "id": "b687e74348f2bed6",
+        "type": "tabs",
+        "dimension": 22.988505747126435,
+        "children": [
+          {
+            "id": "ca0a5550eb86e62d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "todo"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1d8729ec2d41ceea",
+        "type": "tabs",
+        "dimension": 22.988505747126435,
+        "children": [
+          {
+            "id": "20a9395f42c206f1",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 209.5
+    "width": 317.5
   },
   "right": {
     "id": "ec2676a7eeefb2ee",
@@ -198,52 +236,54 @@
       "bases:Create new base": false
     }
   },
-  "active": "70c3b43455d5b498",
+  "active": "a04f4331a8dbef2e",
   "lastOpenFiles": [
-    "windows/checks-ad-dns-client/checks-ad-dns-client.md",
-    "windows/windows.md",
-    "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md",
+    "linux/debian/services/dhcp/dhcp.md",
+    "linux/debian/services/isc-dhcp/isc-dhcp.md",
+    "linux/debian/services/isc-dhcp",
     "linux/linux.md",
+    "linux/debian/services/dhcp",
+    "linux/debian/services",
+    "linux/debian/basic-configurations/basic-configurations.md",
+    "linux/debian/machines-installation/machines-installation.md",
+    "linux/vbox/machines-creation/machines-creation.md",
+    "linux/vbox/clone/clone.md",
+    "linux/debian/service-installations/service-installations.md",
+    "linux/vbox/networks-creation/networks-creation.md",
+    "linux/vbox/clone",
+    "linux/debian/service-installations.md",
+    "linux/debian/service-installations",
+    "linux/debian/basic-configurations.md",
+    "linux/debian/basic-configurations",
+    "linux/debian/machines-installation",
+    "linux/debian",
+    "linux/vbox/networks-creation/internal-networks.md",
+    "linux/vbox/networks-creation/nat-networks.md",
+    "windows/vmachine-creation/vmachine-network-creation.md",
+    "linux/vbox/machines-creation",
     "todo.md",
+    "README.md",
+    "windows/vmachine-installation/vmachine-installation.md",
+    "windows/windows.md",
+    "windows/vmachine-installation/img/vmachine-installation.md",
+    "windows/presentation/presentation.md",
+    "windows/presentation/presentation-graph.canvas",
+    "windows/active-directory/users-and-ous.md",
+    "windows/checks-ad-dns-client/checks-ad-dns-client.md",
+    "windows/active-directory/active-directory.md",
+    "windows/presentation",
+    "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md",
     "windows/checks-ad-dns-client/outputs/check-active-directory.md",
     "windows/checks-ad-dns-client/outputs/check-dns.md",
     "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-02.png",
     "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-01.png",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-01.png",
-    "windows/checks-ad-dns-client/outputs/img/check-dns",
-    "windows/checks-ad-dns-client/outputs/img/chec.md",
-    "windows/checks-ad-dns-client/outputs/img/check-active-directory",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-02.png",
-    "windows/checks-ad-dns-client/outputs/check-client-login.md",
-    "windows/checks-ad-dns-client/outputs/check-active-directory-trust.md",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-01.png",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-03.png",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-02.png",
-    "windows/vmachine-installation/img/vmachine-installation.md",
-    "popbl3-servers/linux/linux.md",
-    "linux/vbox/networks-creation/networks-creation.md",
-    "popbl3-servers/linux/vbox/networks-creation/networks-creation.md",
-    "popbl3-servers/windows/windows.md",
-    "popbl3-servers/windows/checks-ad-dns-client/checks-ad-dns-client.md",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity/server2-checkConnectivity-03.png",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity/server2-checkConnectivity-02.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity/server1-checkConnectivity-02.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkDomain",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/client-checkSession",
-    "popbl3-servers/windows/vmachine-installation/img/vmachine-installation.md",
-    "popbl3-servers/windows/vmachine-installation/img/server1",
-    "popbl3-servers/windows/vmachine-installation/img/client",
-    "popbl3-servers/windows/active-directory/script/create-ad-users-from-template.ps1.md",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/server1-checkDomain.md",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/server2-checkConnectivity.md",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/server1-checkConnectivity.md",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/client-checkSession.md",
-    "popbl3-servers/windows/vmachine-installation/img",
-    "popbl3-servers/windows/basic-configuration/basic-configuration.md",
-    "popbl3-servers/windows/vmachine-creation/vmachine-network-creation.md",
-    "popbl3-servers/windows/installing-services/installing-services.md"
+    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity/server1-checkConnectivity-02.png"
   ]
 }

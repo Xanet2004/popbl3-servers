@@ -8,6 +8,7 @@
 	- [Client inside child domain](/windows/active-directory/client-inside-domain.md)
 - [Checks AD DNS and Client](/windows/checks-ad-dns-client/checks-ad-dns-client.md)
 - [Demo](/windows/demo/demo.md)
+- [Presentation](/windows/presentation/presentation.md)
 
 # Project requisites
 ## Network

@@ -2,6 +2,7 @@
 
 - Presentation
 - Demo
+- Fix machine installation paths for github
 
 ## Linux
 - Kea
