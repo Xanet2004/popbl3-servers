@@ -1,5 +1,5 @@
 ## Windows
-- Check and arguing why all works (see mudle service documents)
+
 - Presentation
 - Demo
 

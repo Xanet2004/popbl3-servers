@@ -7,7 +7,6 @@
 	- [Users and OUs](/windows/active-directory/users-and-ous.md)
 	- [Client inside child domain](/windows/active-directory/client-inside-domain.md)
 - [Checks AD DNS and Client](/windows/checks-ad-dns-client/checks-ad-dns-client.md)
-- [Checks AD DNS and Client-v2](/windows/checks-ad-dns-client/checks-ad-dns-client-v2.md)
 - [Demo](/windows/demo/demo.md)
 
 # Project requisites
@@ -51,6 +50,6 @@ Jarraitu beharreko pausuak:
 - [x] Client makina birtualean ondorengo konfigurazioa burutu beharko da: 
 	- [x] Ekipoa server2 makina birtualean sortutako child domeinuan (pbl.proiektuak.edu) sartu 
 - [x] Egiaztapenak: 
-	- [ ] DNS erregistroak eta domeinu-kontrolatzaileen arteko komunikazioa ondo doazela ziurtatu 
-	- [ ] Child domain bat sortzean, Bi noranzko (Two-way) eta Iragankor (Transitive) konfiantza bat automatikoki sortzen da Root eta Child domeinuen artean. Konfiantza erlazio hori behar bezala sortu dela frogatu 
-	- [ ] Client makina birtualean, “proiektuak.edu” domeinuan sortutako erabiltzaileekin sesioa hasi daitekeela egiaztatu
+	- [x] DNS erregistroak eta domeinu-kontrolatzaileen arteko komunikazioa ondo doazela ziurtatu 
+	- [x] Child domain bat sortzean, Bi noranzko (Two-way) eta Iragankor (Transitive) konfiantza bat automatikoki sortzen da Root eta Child domeinuen artean. Konfiantza erlazio hori behar bezala sortu dela frogatu 
+	- [x] Client makina birtualean, “proiektuak.edu” domeinuan sortutako erabiltzaileekin sesioa hasi daitekeela egiaztatu

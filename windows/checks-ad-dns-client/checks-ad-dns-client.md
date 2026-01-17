@@ -1,76 +1,84 @@
 This document contains the steps to verify that the Active Directory, DNS, child domain, and client configuration are correct.
 
 # Index
-- DNS and Domain Controller Communication
-- Child Domain Trust
-- Client Login
+1. Basic connectivity between DNS and Domain Controllers
+2. Check if trust has been correctly created between root and child servers
+3. Check client login
 
-# Checks
-## DNS and Domain Controller Communication
-- Verify that all DNS records exist and that communication between domain controllers is working.
+# 1. Basic connectivity between DNS and Domain Controllers
 
-```powershell title="server1 - check connectivity"
-# DNS resolution (use server1 as DNS)
-nslookup proiektuak.edu 192.168.2.101
+Verify that all DNS records exist and that communication between domain controllers is working.
+# Active Directory
 
-# Basic network reachability to child DC
-ping -n 4 192.168.2.102
+```powershell title="Check AD service state and DC availability"
+# Check AD is installed and running
+Get-Service -Name NTDS
 
-# From server1, resolve child domain via server1 DNS
-nslookup pbl.proiektuak.edu 192.168.2.101
+# Check domain controller is available
+Test-Connection -ComputerName (Get-ADDomainController).Hostname
 ```
 
-> Outputs: [Server1 - check connectivity](/windows/checks-ad-dns-client/outputs/server1-checkConnectivity.md)
-
-```powershell title="server2 - check connectivity"
-# DNS resolution (use server2 as DNS)
-nslookup pbl.proiektuak.edu 192.168.2.102
-
-# Basic network reachability to root DC
-ping -n 4 192.168.2.101
-
-# From server2, resolve root domain via server2 DNS
-nslookup proiektuak.edu 192.168.2.102
-```
-
-> Outputs: [Server2 - check connectivity](/windows/checks-ad-dns-client/outputs/server2-checkConnectivity.md)
-
+> Outputs: [Check Active Directory](/windows/checks-ad-dns-client/outputs/check-active-directory.md)
 ### Summary
-DNS resolution and network connectivity between root and child domain controllers work correctly, confirming proper communication and delegation.
+- Active Directory is correctly installed and enabled.
+- The domain controller is available.
 
-## Child Domain Trust
-- Ensure that a **two-way** and **transitive trust** was automatically created between the Root domain (`proiektuak.edu`) and the Child domain (`pbl.proiektuak.edu`).
+# DNS
 
-```powershell title="server1 - check domain"
-# AD view
+```powershell title="Check DNS server is localhost"
+# View network adapters 
+Get-NetAdapter
+
+# Get network adapter configuration 
+Get-NetIPConfiguration -InterfaceAlias "Ethernet"
+```
+
+```powershell title="Check DNS is installed and running"
+# Check DNS is installed and running
+Get-Service -Name DNS
+
+# Check DNS translations
+Resolve-DnsName -Name proiektuak.edu -Server (Get-ADDomainController).Hostname
+```
+
+> Outputs: [Check DNS](/windows/checks-ad-dns-client/outputs/check-dns.md)
+### Summary
+- DNS server is localhost.
+- DNS translations are as expected.
+
+# 2. Check if trust has been correctly created between root and child servers
+
+Ensure that a **two-way** and **transitive trust** was automatically created between the Root domain (`proiektuak.edu`) and the Child domain (`pbl.proiektuak.edu`).
+
+```powershell title="Check trust"
+# Check TRUST information
 Get-ADTrust -Filter * | Format-List *
 
 # Lightweight nltest checks (run on each DC)
 nltest /domain_trusts
 ```
 
-> Outputs: [Server1 - check domain](/windows/checks-ad-dns-client/outputs/server1-checkDomain.md)
-
+> Outputs: [Check AD TRUST](/windows/checks-ad-dns-client/outputs/check-active-directory-trust.md)
 ### Summary
 The automatic **two-way and transitive trust** between the root (`proiektuak.edu`) and child (`pbl.proiektuak.edu`) domains has been correctly created and verified.
 
-## Client Login
-- Verify that the client VM can log in with users from the **Root domain** (`proiektuak.edu`) or the **Child domain** (`pbl.proiektuak.edu`) as appropriate.
+# 3. Check client login
 
-```powershell title="client - check domain"
-# Confirm client domain
+Verify that the client VM can log in with users from the **Root domain** (`proiektuak.edu`) or the **Child domain** (`pbl.proiektuak.edu`) as appropriate.
+
+```powershell title="Check domain"
+# Check client domain
 (Get-WmiObject Win32_ComputerSystem).Domain
 ```
 
-```powershell title="client - check local and domain info with different sessions"
+```powershell title="Check domain with different sessions"
 # ssh
 ssh -p 1113 xetxezarreta@localhost
 
-# Show simple local/domain info
+# Check simple local/domain info
 whoami
 ```
 
-> Outputs: [Client - check session](/windows/checks-ad-dns-client/outputs/client-checkSession.md)
-
+> Outputs: [Check client login](/windows/checks-ad-dns-client/outputs/check-client-login.md)
 ### Summary
 The client VM can successfully log in using **root domain users**, verifying that the trust and domain integration are working correctly.

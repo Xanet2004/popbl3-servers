@@ -34,25 +34,9 @@
               "icon": "lucide-file",
               "title": "windows"
             }
-          },
-          {
-            "id": "716c9879c0102137",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "checks-ad-dns-client-v2"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -214,28 +198,36 @@
       "bases:Create new base": false
     }
   },
-  "active": "838fbad925de53bf",
+  "active": "70c3b43455d5b498",
   "lastOpenFiles": [
+    "windows/checks-ad-dns-client/checks-ad-dns-client.md",
+    "windows/windows.md",
+    "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md",
+    "linux/linux.md",
+    "todo.md",
+    "windows/checks-ad-dns-client/outputs/check-active-directory.md",
+    "windows/checks-ad-dns-client/outputs/check-dns.md",
+    "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-02.png",
+    "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-01.png",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-01.png",
+    "windows/checks-ad-dns-client/outputs/img/check-dns",
+    "windows/checks-ad-dns-client/outputs/img/chec.md",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-02.png",
+    "windows/checks-ad-dns-client/outputs/check-client-login.md",
+    "windows/checks-ad-dns-client/outputs/check-active-directory-trust.md",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-01.png",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-03.png",
+    "windows/checks-ad-dns-client/outputs/img/check-active-directory-trust/check-active-directory-trust-02.png",
     "windows/vmachine-installation/img/vmachine-installation.md",
     "popbl3-servers/linux/linux.md",
     "linux/vbox/networks-creation/networks-creation.md",
-    "linux/linux.md",
     "popbl3-servers/linux/vbox/networks-creation/networks-creation.md",
-    "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md",
-    "windows/checks-ad-dns-client/outputs/server1-checkConnectivity.md",
     "popbl3-servers/windows/windows.md",
     "popbl3-servers/windows/checks-ad-dns-client/checks-ad-dns-client.md",
-    "windows/checks-ad-dns-client/checks-ad-dns-client.md",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity/server2-checkConnectivity-03.png",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity/server2-checkConnectivity-02.png",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity/server1-checkConnectivity-02.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity/server1-checkConnectivity-03.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity/server2-checkConnectivity-01.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity/server1-checkConnectivity-01.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkDomain/server2-checkDomain-02.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkDomain/server1-checkDomain-02.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkDomain/server1-checkDomain-01.png",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs/img/client-checkSession/client-checkSession-06.png",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server2-checkConnectivity",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkDomain",
     "popbl3-servers/windows/checks-ad-dns-client/outputs/img/server1-checkConnectivity",
@@ -252,15 +244,6 @@
     "popbl3-servers/windows/vmachine-installation/img",
     "popbl3-servers/windows/basic-configuration/basic-configuration.md",
     "popbl3-servers/windows/vmachine-creation/vmachine-network-creation.md",
-    "popbl3-servers/windows/installing-services/installing-services.md",
-    "popbl3-servers/windows/active-directory/users-and-ous.md",
-    "popbl3-servers/windows/active-directory/script",
-    "popbl3-servers/windows/active-directory/client-inside-domain.md",
-    "popbl3-servers/windows/active-directory/active-directory.md",
-    "popbl3-servers/windows/checks-ad-dns-client/outputs",
-    "popbl3-servers/windows/demo/demo.md",
-    "popbl3-servers/todo.md",
-    "popbl3-servers/README.md",
-    "windows/checks-ad-dns-client/outputs/server1-checkDomain.md"
+    "popbl3-servers/windows/installing-services/installing-services.md"
   ]
 }
