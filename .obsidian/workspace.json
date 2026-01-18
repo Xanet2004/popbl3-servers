@@ -36,23 +36,9 @@
               "icon": "lucide-file",
               "title": "isc-dhcp"
             }
-          },
-          {
-            "id": "41014a44729d9764",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/debian/services/dns/dns.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "dns"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -64,7 +50,7 @@
       {
         "id": "a5f984716da4e94a",
         "type": "tabs",
-        "dimension": 54.02298850574712,
+        "dimension": 58.202716823406476,
         "children": [
           {
             "id": "838fbad925de53bf",
@@ -111,7 +97,7 @@
       {
         "id": "b687e74348f2bed6",
         "type": "tabs",
-        "dimension": 22.98850574712644,
+        "dimension": 20.89864158829676,
         "children": [
           {
             "id": "ca0a5550eb86e62d",
@@ -132,7 +118,7 @@
       {
         "id": "1d8729ec2d41ceea",
         "type": "tabs",
-        "dimension": 22.98850574712644,
+        "dimension": 20.89864158829676,
         "children": [
           {
             "id": "20a9395f42c206f1",
@@ -253,25 +239,27 @@
       "bases:Create new base": false
     }
   },
-  "active": "41014a44729d9764",
+  "active": "1516cdfbcf4ead18",
   "lastOpenFiles": [
+    "linux/debian/services/isc-dhcp/img/dhcp (15).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (15).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (14).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (13).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (12).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (11).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (10).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (9).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (8).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (7).png",
+    "linux/debian/services/isc-dhcp/img/isc-dhcp (6).png",
     "linux/debian/services/isc-dhcp/isc-dhcp.md",
+    "linux/debian/services/isc-dhcp/img",
     "linux/debian/services/dns/dns.md",
     "linux/linux.md",
     "linux/debian/services/dns",
     "linux/vbox/clone/clone.md",
     "linux/debian/basic-configurations/basic-configurations.md",
     "todo.md",
-    "Pasted image 20260118141210.png",
-    "Pasted image 20260118141157.png",
-    "Pasted image 20260118141027.png",
-    "Pasted image 20260118141011.png",
-    "Pasted image 20260118140949.png",
-    "Pasted image 20260118140627.png",
-    "Pasted image 20260118140606.png",
-    "Pasted image 20260118135100.png",
-    "Pasted image 20260118135023.png",
-    "Pasted image 20260118134907.png",
     "linux/vbox/networks-creation/networks-creation.md",
     "linux/debian/services/kea/kea.md",
     "linux/debian/services/kea",
@@ -288,7 +276,6 @@
     "linux/debian/basic-configurations.md",
     "linux/debian/basic-configurations",
     "linux/debian/machines-installation",
-    "linux/debian",
     "linux/vbox/networks-creation/internal-networks.md",
     "linux/vbox/networks-creation/nat-networks.md",
     "windows/vmachine-creation/vmachine-network-creation.md",
@@ -300,7 +287,6 @@
     "windows/presentation/presentation-graph.canvas",
     "windows/active-directory/users-and-ous.md",
     "windows/checks-ad-dns-client/checks-ad-dns-client.md",
-    "windows/active-directory/active-directory.md",
-    "windows/checks-ad-dns-client/checks-ad-dns-client-v2.md"
+    "windows/active-directory/active-directory.md"
   ]
 }

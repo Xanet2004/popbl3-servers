@@ -176,39 +176,39 @@ subnet 192.168.4.0 netmask 255.255.252.0 {
 ### A1. Normal operation: lease provided by primary (zaldua1zerb1 → zaldua1bez1)
 
 zaldua1zerb1:
-![[Pasted image 20260118133700.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (3).png]]
 
 zaldua1zerb2:
-![[Pasted image 20260118133822.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (4).png]]
 ### A2. Failover: primary down, lease provided by secondary (zaldua1zerb2 → zaldua1bez1)
 
 Condition: zaldua1zerb1 stopped.
 
 zaldua1zerb1:
-![[Pasted image 20260118133925.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (5).png]]
 
 zaldua1zerb2:
-![[Pasted image 20260118133937.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (6).png]]
 ## B) DHCP - Network zaldua3 (192.168.1.128/25) - Single DHCP Server (zaldua1zerb1 only)
 
 ### B1. Normal operation: lease provided by zaldua1zerb1 (→ zaldua3bez1)
 
 zaldua1zerb1:
-![[Pasted image 20260118134907.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (7).png]]
 
 ## C) DHCP - Network zaldua2 (192.168.4.0/22) - Failover Pair (zaldua2zerb1 ↔ zaldua1zerb1)
 ### C1. Normal operation: lease provided by primary (zaldua2zerb1 → zaldua2bez1)
 
 zaldua2zerb1:
-![[Pasted image 20260118141027.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (15).png]]
 
 zaldua1zerb1:
-![[Pasted image 20260118141011.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (14).png]]
 
 ### C2. Failover: primary down, lease provided by secondary (zaldua1zerb1 → zaldua2bez1)
 
 zaldua2zerb1:
-![[Pasted image 20260118141157.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (1).png]]
 
 zaldua1zerb1:
-![[Pasted image 20260118141210.png]]
+![[/linux/debian/services/isc-dhcp/img/isc-dhcp (2).png]]
