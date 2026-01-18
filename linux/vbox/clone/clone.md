@@ -22,12 +22,12 @@ VBoxManage clonevm "zaldua1bez1" --basefolder "C:\Users\xanet\VirtualBox VMs\Lin
 # Change NIC configurations
 
 ```powershell title="Change NIC configurations"
-VBoxManage modifyvm "zaldua1zerb2" --macaddress7 000102030201 --intnet6 zaldua1 --nic7 none --nic8 none
-VBoxManage modifyvm "zaldua2zerb1" --macaddress7 000102030301 --intnet6 zaldua2 --nic7 none --nic8 none
-VBoxManage modifyvm "zaldua3zerb1" --macaddress7 000102030401 --intnet6 zaldua2 --nic7 none --nic8 none
+VBoxManage modifyvm "zaldua1zerb2" --macaddress6 000102030201 --intnet6 zaldua1 --nic7 none --nic8 none
+VBoxManage modifyvm "zaldua2zerb1" --macaddress6 000102030301 --intnet6 zaldua2 --nic7 none --nic8 none
+VBoxManage modifyvm "zaldua3zerb1" --macaddress6 000102030401 --intnet6 zaldua3 --nic7 none --nic8 none
 
-VBoxManage modifyvm "zaldua2bez1" --macaddress7 000102030302 --intnet6 zaldua2 --nic7 none --nic8 none
-VBoxManage modifyvm "zaldua3bez1" --macaddress7 000102030402 --intnet6 zaldua3 --nic7 none --nic8 none
+VBoxManage modifyvm "zaldua2bez1" --macaddress6 000102030302 --intnet6 zaldua2 --nic7 none --nic8 none
+VBoxManage modifyvm "zaldua3bez1" --macaddress6 000102030402 --intnet6 zaldua3 --nic7 none --nic8 none
 ```
 
 > Note
@@ -104,6 +104,14 @@ zaldua1zerb2 # Replace with the actual hostname
 
 > Note
 > Repeat the configuration changes for each client
+
+## zaldua3zerb1
+
+According to the [activity](https://docs.google.com/document/d/1W8xz1h4jfhF81_PzgodD-vRKpa6XWWj4LW81x_kvXgE/edit?tab=t.0), we need to uninstall isp dhcp server.
+
+```powershell title="/etc/hosts"
+apt purge -y isc-dhcp-server # Remove including configuration files
+```
 # Snapshot
 
 ```powershell title="terminal - snapshot"

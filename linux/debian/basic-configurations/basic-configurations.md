@@ -19,7 +19,7 @@ iface enp0s17 inet static
 
 allow-hotplug enp0s18
 iface enp0s18 inet static
-   address 192.168.4.4/23
+   address 192.168.4.4/22
 
 allow-hotplug enp0s19
 iface enp0s19 inet static
