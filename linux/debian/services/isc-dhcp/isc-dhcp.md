@@ -124,6 +124,21 @@ subnet 192.168.42.0 netmask 255.255.254.0 {
   default-lease-time 60;
   max-lease-time 720;
 }
+
+host zaldua1bez1 {
+  hardware ethernet 00:01:02:03:02:02;
+  fixed-address 192.168.42.10;
+}
+
+host zaldua2bez1 {
+  hardware ethernet 00:01:02:03:03:02;
+  fixed-address 192.168.4.10;
+}
+
+host zaldua3bez1 {
+  hardware ethernet 00:01:02:03:04:02;
+  fixed-address 192.168.1.140;
+}
 ```
 
 ## zaldua2zerb1
@@ -194,8 +209,7 @@ zaldua1zerb2:
 ### B1. Normal operation: lease provided by zaldua1zerb1 (→ zaldua3bez1)
 
 zaldua1zerb1:
-![[/linux/debian/services/isc-dhcp/img/isc-dhcp (7).png]]
-
+![[isc-dhcp (7).png]]
 ## C) DHCP - Network zaldua2 (192.168.4.0/22) - Failover Pair (zaldua2zerb1 ↔ zaldua1zerb1)
 ### C1. Normal operation: lease provided by primary (zaldua2zerb1 → zaldua2bez1)
 
@@ -212,3 +226,14 @@ zaldua2zerb1:
 
 zaldua1zerb1:
 ![[/linux/debian/services/isc-dhcp/img/isc-dhcp (2).png]]
+
+# Snapshot
+
+```powershell title="snapshot"
+VBoxManage snapshot "zaldua1zerb1" take "03_0_dhcp_configuration" --description="This is the virtual machine after configuring DHCP."
+VBoxManage snapshot "zaldua1zerb2" take "03_0_dhcp_configuration" --description="This is the virtual machine after configuring DHCP."
+VBoxManage snapshot "zaldua2zerb1" take "03_0_dhcp_configuration" --description="This is the virtual machine after configuring DHCP."
+```
+
+> Note
+> Poweroff the machines first to avoid future conflicts.
