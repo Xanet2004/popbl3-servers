@@ -4,3 +4,7 @@
 - [KEA High Availabity](/linux/debian/services/kea/kea-ha.md)
 - [KEA DDNS](/linux/debian/services/kea/kea-dhcp-dns.md)
 
+# Conf files
+- /etc/kea/kea-dhcp4.conf - DHCPv4
+- /etc/kea/kea-ctrl-agent.conf - Control Agent
+- /etc/kea/kea-dhcp-ddns.conf - DDNS

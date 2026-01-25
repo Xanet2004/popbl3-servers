@@ -557,7 +557,7 @@ systemctl status bind9
 ```powershell title="snapshot"
 VBoxManage snapshot "zaldua1zerb1" take "04_0_dns" --description="This is the virtual machine after configuring DNS."
 VBoxManage snapshot "zaldua1zerb2" take "04_0_dns" --description="This is the virtual machine after configuring DNS."
-VBoxManage snapshot "zaldua3zerb1" take "04_0_dns" --description="This is the virtual machine after configuring DNS."
+VBoxManage snapshot "zaldua2zerb1" take "04_0_dns" --description="This is the virtual machine after configuring DNS."
 VBoxManage snapshot "zaldua3zerb1" take "04_0_dns" --description="This is the virtual machine after configuring DNS."
 ```
 
