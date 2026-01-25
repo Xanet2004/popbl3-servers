@@ -5,10 +5,7 @@
 - Fix machine installation paths for github
 
 ## Linux
-- FIX:
-	- Bezeroa network interfaces -> DHCP client
-	- CLONE Bezeroa network interfaces ?????
-	- zaldua1zerb1 -> zaldua3bez1 UNKNOW LEASE
+
 - Kea
 	- Konfigurazioak
 		- Konfigurazio berdina lortu ber dia KEA erabiliz eta gero aldatu?

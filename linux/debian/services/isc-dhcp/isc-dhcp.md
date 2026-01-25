@@ -15,8 +15,6 @@ INTERFACESv6=""
 ```
 
 ```powershell title="/etc/dhcp/dhcpd.conf"
-option domain-name "zalduabat.eus";
-
 default-lease-time 600;
 max-lease-time 7200;
 
@@ -66,7 +64,7 @@ subnet 192.168.4.0 netmask 255.255.252.0 {
     failover peer "zaldua2-failover";
   }
   option domain-name-servers 192.168.4.5, 192.168.4.4;
-  option domain-name "zalduabat.eus";
+  option domain-name "zalduabi.eus";
   option routers 192.168.4.1;
   option broadcast-address 192.168.7.255;
   default-lease-time 60;
@@ -78,11 +76,26 @@ subnet 192.168.1.128 netmask 255.255.255.128 {
     range 192.168.1.160 192.168.1.200;
   }
   option domain-name-servers 192.168.1.132, 192.168.1.133;
-  option domain-name "zalduabat.eus";
+  option domain-name "zalduahiru.eus";
   option routers 192.168.1.129;
   option broadcast-address 192.168.1.255;
   default-lease-time 60;
   max-lease-time 720;
+}
+
+host zaldua1bez1 {
+  hardware ethernet 00:01:02:03:02:02;
+  fixed-address 192.168.42.10;
+}
+
+host zaldua2bez1 {
+  hardware ethernet 00:01:02:03:03:02;
+  fixed-address 192.168.4.10;
+}
+
+host zaldua3bez1 {
+  hardware ethernet 00:01:02:03:04:02;
+  fixed-address 192.168.1.140;
 }
 ```
 
@@ -94,8 +107,6 @@ INTERFACESv6=""
 ```
 
 ```powershell title="/etc/dhcp/dhcpd.conf"
-option domain-name "zalduabat.eus";
-
 default-lease-time 600;
 max-lease-time 7200;
 
@@ -129,16 +140,6 @@ host zaldua1bez1 {
   hardware ethernet 00:01:02:03:02:02;
   fixed-address 192.168.42.10;
 }
-
-host zaldua2bez1 {
-  hardware ethernet 00:01:02:03:03:02;
-  fixed-address 192.168.4.10;
-}
-
-host zaldua3bez1 {
-  hardware ethernet 00:01:02:03:04:02;
-  fixed-address 192.168.1.140;
-}
 ```
 
 ## zaldua2zerb1
@@ -149,8 +150,6 @@ INTERFACESv6=""
 ```
 
 ```powershell title="/etc/dhcp/dhcpd.conf"
-option domain-name "zalduabat.eus";
-
 default-lease-time 600;
 max-lease-time 7200;
 
@@ -176,11 +175,16 @@ subnet 192.168.4.0 netmask 255.255.252.0 {
     failover peer "zaldua2-failover";
   }
   option domain-name-servers 192.168.4.5, 192.168.4.4;
-  option domain-name "zalduabat.eus";
+  option domain-name "zalduabi.eus";
   option routers 192.168.4.1;
   option broadcast-address 192.168.7.255;
   default-lease-time 60;
   max-lease-time 720;
+}
+
+host zaldua2bez1 {
+  hardware ethernet 00:01:02:03:03:02;
+  fixed-address 192.168.4.10;
 }
 ```
 
