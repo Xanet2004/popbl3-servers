@@ -38,6 +38,34 @@
             }
           },
           {
+            "id": "53e54487a35b5158",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/debian/services/kea/kea-ipv4.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "kea-ipv4"
+            }
+          },
+          {
+            "id": "10cf35db742159b2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/debian/services/isc-dhcp/isc-dhcp.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "isc-dhcp"
+            }
+          },
+          {
             "id": "a8f4dbeddcfaf9e3",
             "type": "leaf",
             "state": {
@@ -253,17 +281,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "a8f4dbeddcfaf9e3",
+  "active": "53e54487a35b5158",
   "lastOpenFiles": [
+    "linux/debian/services/kea/img/kea-03.png",
+    "Pasted image 20260125185437.png",
+    "linux/debian/services/kea/img/kea-02.png",
+    "linux/debian/services/kea/kea-ipv4.md",
     "linux/debian/services/kea/kea.md",
-    "linux/debian/services/kea/img/kea-01.png",
+    "linux/debian/services/isc-dhcp/isc-dhcp.md",
     "linux/debian/services/kea/kea-installation.md",
+    "linux/linux.md",
+    "linux/debian/services/kea/img/kea-01.png",
     "linux/debian/services/kea/img",
     "linux/debian/services/dns/dns.md",
     "todo.md",
-    "linux/linux.md",
     "linux/debian/service-installations/service-installations.md",
-    "linux/debian/services/isc-dhcp/isc-dhcp.md",
     "linux/debian/services/isc-dhcp/img/isc-dhcp (7).png",
     "linux/debian/services/isc-dhcp/img/isc-dhcp (7).png",
     "linux/vbox/clone/clone.md",
@@ -271,9 +303,6 @@
     "linux/debian/services/isc-dhcp/img/isc-dhcp (15).png",
     "linux/debian/services/isc-dhcp/img/isc-dhcp (14).png",
     "linux/debian/services/isc-dhcp/img/isc-dhcp (13).png",
-    "linux/debian/services/isc-dhcp/img/isc-dhcp (12).png",
-    "linux/debian/services/isc-dhcp/img/isc-dhcp (11).png",
-    "linux/debian/services/isc-dhcp/img/isc-dhcp (10).png",
     "linux/debian/services/isc-dhcp/img",
     "linux/debian/services/dns",
     "linux/debian/basic-configurations/basic-configurations.md",
@@ -299,7 +328,6 @@
     "windows/vmachine-installation/img/vmachine-installation.md",
     "windows/presentation/presentation.md",
     "windows/presentation/presentation-graph.canvas",
-    "windows/active-directory/users-and-ous.md",
-    "windows/checks-ad-dns-client/checks-ad-dns-client.md"
+    "windows/active-directory/users-and-ous.md"
   ]
 }

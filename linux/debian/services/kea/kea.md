@@ -8,3 +8,6 @@
 - /etc/kea/kea-dhcp4.conf - DHCPv4
 - /etc/kea/kea-ctrl-agent.conf - Control Agent
 - /etc/kea/kea-dhcp-ddns.conf - DDNS
+
+> Note
+> Kea uses json for the configuration files.
