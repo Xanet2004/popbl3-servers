@@ -6,19 +6,6 @@
 	- zaldua1zerb1 - Primary
 - zaldua2zerb1 - Primary
 	- zaldua1zerb1 - Secondary
-
-# Basic configuration
-
-We will start without configuring HA. This is because I want to test a basic configuration before we start with more complicated configurations.
-
-So, we are configuring each server as the primary server on each subnet. But we won't configure zaldua1zerb2 yet (nor zaldua3zerb1, but that server will never have DHCP).
-
-## Basic structure:
-- zaldua1zerb1:
-	- zaldua1 dhcp
-	- zaldua3 dhcp
-- zaldua2zerb1:
-	- zaldua2 dhcp
 ## zaldua1zerb1
 
 ### Backup
@@ -32,7 +19,12 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 {
   "Dhcp4": {
     "interfaces-config": {
-      "interfaces": [ "enp0s17", "enp0s19" ]
+      "interfaces": [ "enp0s17", "enp0s18", "enp0s19" ]
+    },
+
+    "control-socket": {
+      "socket-type": "unix",
+      "socket-name": "/run/kea/kea4-ctrl-socket"
     },
 
     "lease-database": {
@@ -42,19 +34,74 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
     },
 
     "authoritative": true,
-
     "renew-timer": 30,
     "rebind-timer": 45,
     "valid-lifetime": 60,
     "max-valid-lifetime": 720,
 
+    "hooks-libraries": [
+      { "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_lease_cmds.so" },
+      {
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_ha.so",
+        "parameters": {
+          "high-availability": [
+
+            {
+              "this-server-name": "zaldua1zerb1-zaldua1",
+              "mode": "hot-standby",
+              "heartbeat-delay": 10000,
+              "max-response-delay": 10000,
+
+              "peers": [
+                {
+                  "name": "zaldua1zerb1-zaldua1",
+                  "url": "http://192.168.42.4:8000/",
+                  "role": "primary",
+                  "auto-failover": true
+                },
+                {
+                  "name": "zaldua1zerb2-zaldua1",
+                  "url": "http://192.168.42.5:8000/",
+                  "role": "standby",
+                  "auto-failover": true
+                }
+              ]
+            },
+
+            {
+              "this-server-name": "zaldua1zerb1-zaldua2",
+              "mode": "hot-standby",
+              "heartbeat-delay": 10000,
+              "max-response-delay": 10000,
+
+              "peers": [
+                {
+                  "name": "zaldua2zerb1-zaldua2",
+                  "url": "http://192.168.4.5:8000/",
+                  "role": "primary",
+                  "auto-failover": true
+                },
+                {
+                  "name": "zaldua1zerb1-zaldua2",
+                  "url": "http://192.168.4.4:8000/",
+                  "role": "standby",
+                  "auto-failover": true
+                }
+              ]
+            }
+
+          ]
+        }
+      }
+    ],
+
     "subnet4": [
       {
         "id": 1,
         "subnet": "192.168.42.0/23",
-        "pools": [
-          { "pool": "192.168.42.100-192.168.42.200" }
-        ],
+        "user-context": { "ha-server-name": "zaldua1zerb1-zaldua1" },
+
+        "pools": [ { "pool": "192.168.42.100-192.168.42.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.42.2" },
           { "name": "broadcast-address", "data": "192.168.43.255" },
@@ -71,11 +118,30 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
       },
 
       {
+        "id": 10,
+        "subnet": "192.168.4.0/22",
+        "user-context": { "ha-server-name": "zaldua1zerb1-zaldua2" },
+
+        "pools": [ { "pool": "192.168.4.100-192.168.4.200" } ],
+        "option-data": [
+          { "name": "routers", "data": "192.168.4.1" },
+          { "name": "broadcast-address", "data": "192.168.7.255" },
+          { "name": "domain-name", "data": "zalduabi.eus" },
+          { "name": "domain-name-servers", "data": "192.168.4.5, 192.168.4.4" }
+        ],
+        "reservations": [
+          {
+            "hw-address": "00:01:02:03:03:02",
+            "ip-address": "192.168.4.10",
+            "hostname": "zaldua2bez1"
+          }
+        ]
+      },
+
+      {
         "id": 2,
         "subnet": "192.168.1.128/25",
-        "pools": [
-          { "pool": "192.168.1.160-192.168.1.200" }
-        ],
+        "pools": [ { "pool": "192.168.1.160-192.168.1.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.1.129" },
           { "name": "broadcast-address", "data": "192.168.1.255" },
@@ -95,6 +161,93 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 }
 ```
 
+## zaldua1zerb2
+
+### Backup
+
+```powershell title="KEA backup"
+cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
+```
+### DHCP configuration
+
+```json title="zaldua1zerb2 - /etc/kea/kea-dhcp4.conf"
+{
+  "Dhcp4": {
+    "interfaces-config": { "interfaces": [ "enp0s17" ] },
+
+    "control-socket": {
+      "socket-type": "unix",
+      "socket-name": "/run/kea/kea4-ctrl-socket"
+    },
+
+    "lease-database": {
+      "type": "memfile",
+      "persist": true,
+      "name": "/var/lib/kea/kea-leases4.csv"
+    },
+
+    "authoritative": true,
+    "renew-timer": 30,
+    "rebind-timer": 45,
+    "valid-lifetime": 60,
+    "max-valid-lifetime": 720,
+
+    "hooks-libraries": [
+      { "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_lease_cmds.so" },
+      {
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_ha.so",
+        "parameters": {
+          "high-availability": [
+            {
+              "this-server-name": "zaldua1zerb2-zaldua1",
+              "mode": "hot-standby",
+              "heartbeat-delay": 10000,
+              "max-response-delay": 10000,
+              "peers": [
+                {
+                  "name": "zaldua1zerb1-zaldua1",
+                  "url": "http://192.168.42.4:8000/",
+                  "role": "primary",
+                  "auto-failover": true
+                },
+                {
+                  "name": "zaldua1zerb2-zaldua1",
+                  "url": "http://192.168.42.5:8000/",
+                  "role": "standby",
+                  "auto-failover": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+
+    "subnet4": [
+      {
+        "id": 1,
+        "subnet": "192.168.42.0/23",
+        "user-context": { "ha-server-name": "zaldua1zerb2-zaldua1" },
+
+        "pools": [ { "pool": "192.168.42.100-192.168.42.200" } ],
+        "option-data": [
+          { "name": "routers", "data": "192.168.42.2" },
+          { "name": "broadcast-address", "data": "192.168.43.255" },
+          { "name": "domain-name", "data": "zalduabat.eus" },
+          { "name": "domain-name-servers", "data": "192.168.42.4, 192.168.42.5" }
+        ],
+        "reservations": [
+          {
+            "hw-address": "00:01:02:03:02:02",
+            "ip-address": "192.168.42.10",
+            "hostname": "zaldua1bez1"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 ## zaldua2zerb1
 
 ### Backup
@@ -107,8 +260,11 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 ```json title="zaldua2zerb1 - /etc/kea/kea-dhcp4.conf"
 {
   "Dhcp4": {
-    "interfaces-config": {
-      "interfaces": [ "enp0s17" ]
+    "interfaces-config": { "interfaces": [ "enp0s17" ] },
+
+    "control-socket": {
+      "socket-type": "unix",
+      "socket-name": "/run/kea/kea4-ctrl-socket"
     },
 
     "lease-database": {
@@ -118,19 +274,49 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
     },
 
     "authoritative": true,
-
     "renew-timer": 30,
     "rebind-timer": 45,
     "valid-lifetime": 60,
     "max-valid-lifetime": 720,
 
+    "hooks-libraries": [
+      { "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_lease_cmds.so" },
+      {
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_ha.so",
+        "parameters": {
+          "high-availability": [
+            {
+              "this-server-name": "zaldua2zerb1-zaldua2",
+              "mode": "hot-standby",
+              "heartbeat-delay": 10000,
+              "max-response-delay": 10000,
+              "peers": [
+                {
+                  "name": "zaldua2zerb1-zaldua2",
+                  "url": "http://192.168.4.5:8000/",
+                  "role": "primary",
+                  "auto-failover": true
+                },
+                {
+                  "name": "zaldua1zerb1-zaldua2",
+                  "url": "http://192.168.4.4:8000/",
+                  "role": "standby",
+                  "auto-failover": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+
     "subnet4": [
       {
         "id": 10,
         "subnet": "192.168.4.0/22",
-        "pools": [
-          { "pool": "192.168.4.100-192.168.4.200" }
-        ],
+        "user-context": { "ha-server-name": "zaldua2zerb1-zaldua2" },
+
+        "pools": [ { "pool": "192.168.4.100-192.168.4.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.4.1" },
           { "name": "broadcast-address", "data": "192.168.7.255" },
@@ -150,38 +336,17 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 }
 ```
 
-## zaldua1zerb2
-
-As we said, we are disabling temporarily this server. Because it would be giving problems to the main server. We still are not configuring HA (failover for KEA) after all.
-Or we can just poweroff the second server.
-
-```powershell title="zaldua1zerb2 - disable KEA"
-systemctl stop kea-dhcp4-server
-systemctl disable kea-dhcp4-server
-```
-
 # Restart service
 
-```powershell title="zaldua1zerb1 + zaldua2zerb1 - restart and status"
+```powershell title="restart KEA"
 systemctl restart kea-dhcp4-server
-```
-
-```powershell title="check journalctl"
 systemctl status kea-dhcp4-server
 ```
 
-# Check logs
-
-```powershell title="check logs"
-journalctl -u kea-dhcp4-server -f
-```
-
-zaldua1zerb1:
-![[/linux/debian/services/kea/img/kea-02.png]]
 > Note
-> zaldua1bez1 + zaldua3bez1 leased correctly
+> It should say that the service failed
 
-zaldua2zerb1:
-![[/linux/debian/services/kea/img/kea-03.png]]
-> Note
-> zaldua2bez1 leased correctly
+# High Availability
+
+Now that we configured our KEA DHCP as the activity asks, we need to configure High Availability for a failover-like system.
+This configuration shouldn't work by itself, so we are doing the snapshot after configuring HA. [KEA High Availability](/linux/debian/services/kea/kea-ha.md)
