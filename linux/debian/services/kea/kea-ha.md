@@ -14,6 +14,7 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
     "http-port": 8000,
     "control-sockets": {
       "dhcp4": {
+	    "comment": "zaldua1zerb1",
         "socket-type": "unix",
         "socket-name": "/run/kea/kea4-ctrl-socket"
       }
@@ -35,6 +36,7 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
     "http-port": 8000,
     "control-sockets": {
       "dhcp4": {
+	    "comment": "zaldua1zerb2",
         "socket-type": "unix",
         "socket-name": "/run/kea/kea4-ctrl-socket"
       }
@@ -56,6 +58,7 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
     "http-port": 8000,
     "control-sockets": {
       "dhcp4": {
+	    "comment": "zaldua2zerb1",
         "socket-type": "unix",
         "socket-name": "/run/kea/kea4-ctrl-socket"
       }

@@ -38,21 +38,7 @@
             }
           },
           {
-            "id": "53e54487a35b5158",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/debian/services/kea/kea-ipv4.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "kea-ipv4"
-            }
-          },
-          {
-            "id": "5dde469fb3004219",
+            "id": "ddbc3d29d194eb2c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -64,21 +50,8 @@
               "icon": "lucide-file",
               "title": "kea-ha"
             }
-          },
-          {
-            "id": "57317f445f474d5e",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.5"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.5"
-            }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -174,7 +147,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 317.5
+    "width": 206.50418853759766
   },
   "right": {
     "id": "ec2676a7eeefb2ee",
@@ -279,13 +252,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "5dde469fb3004219",
+  "active": "a04f4331a8dbef2e",
   "lastOpenFiles": [
+    "linux/debian/services/kea/kea-ha.md",
+    "linux/debian/services/configuration-files/etc/kea/kea-dhcp4.conf.md",
+    "linux/debian/services/configuration-files/etc/kea/kea-ctrl-agent.conf.md",
     "linux/debian/services/kea/kea.md",
     "linux/debian/services/kea/kea-ipv4.md",
-    "linux/debian/services/kea/kea-ha.md",
-    "linux/linux.md",
     "linux/debian/services/kea/kea-installation.md",
+    "linux/debian/services/configuration-files/etc/kea",
+    "linux/debian/services/configuration-files/etc",
+    "linux/debian/services/configuration-files",
+    "linux/linux.md",
     "linux/debian/services/isc-dhcp/isc-dhcp.md",
     "linux/debian/services/kea/kea-basic-conf.md",
     "linux/debian/services/kea/kea-dhcp-dns.md",
@@ -315,18 +293,13 @@
     "linux/debian/services/isc-dhcp",
     "linux/debian/services/dhcp",
     "linux/debian/services",
-    "linux/vbox/clone",
     "linux/debian/service-installations.md",
-    "linux/debian/service-installations",
     "linux/debian/basic-configurations.md",
-    "linux/debian/basic-configurations",
     "linux/vbox/networks-creation/internal-networks.md",
     "linux/vbox/networks-creation/nat-networks.md",
     "windows/vmachine-creation/vmachine-network-creation.md",
     "README.md",
     "windows/vmachine-installation/vmachine-installation.md",
-    "windows/windows.md",
-    "windows/vmachine-installation/img/vmachine-installation.md",
     "windows/presentation/presentation-graph.canvas"
   ]
 }

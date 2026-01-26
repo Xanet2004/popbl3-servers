@@ -6,9 +6,13 @@
 - [KEA DDNS](/linux/debian/services/kea/kea-dhcp-dns.md)
 
 # Conf files
-- /etc/kea/kea-dhcp4.conf - DHCPv4
-- /etc/kea/kea-ctrl-agent.conf - Control Agent
-- /etc/kea/kea-dhcp-ddns.conf - DDNS
+- [/etc/kea/kea-dhcp4.conf](/linux/debian/services/configuration-files/etc/kea/kea-dhcp4.conf.md) - DHCP
+- [/etc/kea/kea-ctrl-agent.conf](/linux/debian/services/configuration-files/etc/kea/kea-ctrl-agent.conf.md) - HA
+- [/etc/kea/kea-dhcp-ddns.conf](/linux/debian/services/configuration-files/etc/kea/kea-dhcp-ddns.conf.md) - DDNS
 
 > Note
 > Kea uses json for the configuration files.
+
+# Official Documentation
+
+https://kea.readthedocs.io/en/stable/arm/intro.html
