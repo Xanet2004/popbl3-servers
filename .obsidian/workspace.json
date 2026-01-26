@@ -94,7 +94,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -295,10 +295,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "0ba03bd06e303d0d",
+  "active": "26b7cccfd3714111",
   "lastOpenFiles": [
-    "linux/debian/services/kea/kea-ha.md",
+    "Pasted image 20260126215850.png",
     "linux/debian/services/kea/kea-ipv4.md",
+    "linux/debian/services/kea/kea-ha.md",
     "Pasted image 20260126212748.png",
     "Pasted image 20260126212620.png",
     "Pasted image 20260126212555.png",

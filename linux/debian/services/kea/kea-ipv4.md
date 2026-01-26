@@ -141,7 +141,7 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
       {
         "id": 3,
         "subnet": "192.168.1.128/25",
-        "user-context": { "ha-server-name": "no-ha" },
+        "user-context": { "ha-server-name": "zaldua1zerb1-zaldua1" },
         "pools": [ { "pool": "192.168.1.160-192.168.1.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.1.129" },
@@ -229,7 +229,6 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
         "id": 1,
         "subnet": "192.168.42.0/23",
         "user-context": { "ha-server-name": "zaldua1zerb2-zaldua1" },
-
         "pools": [ { "pool": "192.168.42.100-192.168.42.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.42.2" },
@@ -244,7 +243,15 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
             "hostname": "zaldua1bez1"
           }
         ]
-      }
+      },
+      
+	  {
+		"id": 3,
+		 "subnet": "192.168.1.128/25",
+		 "user-context": { "ha-server-name": "zaldua1zerb2-zaldua1" },
+		 "pools": [],
+		 "option-data": []
+	  }
     ]
   }
 }
