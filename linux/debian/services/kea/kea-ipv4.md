@@ -55,13 +55,13 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
               "peers": [
                 {
                   "name": "zaldua1zerb1-zaldua1",
-                  "url": "http://192.168.42.4:8000/",
+                  "url": "http://192.168.42.4:8001/",
                   "role": "primary",
                   "auto-failover": true
                 },
                 {
                   "name": "zaldua1zerb2-zaldua1",
-                  "url": "http://192.168.42.5:8000/",
+                  "url": "http://192.168.42.5:8001/",
                   "role": "standby",
                   "auto-failover": true
                 }
@@ -77,13 +77,13 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
               "peers": [
                 {
                   "name": "zaldua2zerb1-zaldua2",
-                  "url": "http://192.168.4.5:8000/",
+                  "url": "http://192.168.4.5:8002/",
                   "role": "primary",
                   "auto-failover": true
                 },
                 {
                   "name": "zaldua1zerb1-zaldua2",
-                  "url": "http://192.168.4.4:8000/",
+                  "url": "http://192.168.4.4:8002/",
                   "role": "standby",
                   "auto-failover": true
                 }
@@ -118,7 +118,7 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
       },
 
       {
-        "id": 10,
+        "id": 2,
         "subnet": "192.168.4.0/22",
         "user-context": { "ha-server-name": "zaldua1zerb1-zaldua2" },
 
@@ -139,8 +139,9 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
       },
 
       {
-        "id": 2,
+        "id": 3,
         "subnet": "192.168.1.128/25",
+        "user-context": { "ha-server-name": "no-ha" },
         "pools": [ { "pool": "192.168.1.160-192.168.1.200" } ],
         "option-data": [
           { "name": "routers", "data": "192.168.1.129" },
@@ -206,13 +207,13 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
               "peers": [
                 {
                   "name": "zaldua1zerb1-zaldua1",
-                  "url": "http://192.168.42.4:8000/",
+                  "url": "http://192.168.42.4:8001/",
                   "role": "primary",
                   "auto-failover": true
                 },
                 {
                   "name": "zaldua1zerb2-zaldua1",
-                  "url": "http://192.168.42.5:8000/",
+                  "url": "http://192.168.42.5:8001/",
                   "role": "standby",
                   "auto-failover": true
                 }
@@ -293,13 +294,13 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
               "peers": [
                 {
                   "name": "zaldua2zerb1-zaldua2",
-                  "url": "http://192.168.4.5:8000/",
+                  "url": "http://192.168.4.5:8002/",
                   "role": "primary",
                   "auto-failover": true
                 },
                 {
                   "name": "zaldua1zerb1-zaldua2",
-                  "url": "http://192.168.4.4:8000/",
+                  "url": "http://192.168.4.4:8002/",
                   "role": "standby",
                   "auto-failover": true
                 }
@@ -312,7 +313,7 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 
     "subnet4": [
       {
-        "id": 10,
+        "id": 2,
         "subnet": "192.168.4.0/22",
         "user-context": { "ha-server-name": "zaldua2zerb1-zaldua2" },
 
@@ -342,9 +343,6 @@ cp /etc/kea/kea-dhcp4.conf /etc/kea/kea-dhcp4.conf.bak
 systemctl restart kea-dhcp4-server
 systemctl status kea-dhcp4-server
 ```
-
-> Note
-> It should say that the service failed
 
 # High Availability
 

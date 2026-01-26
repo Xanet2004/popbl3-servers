@@ -85,7 +85,75 @@ systemctl status kea-dhcp4-server
 journalctl -u kea-dhcp4-server -f
 ```
 
+Now that we have KEA High Availability active this should be the correct behaviour:
+
+## zaldua1
+
+| zaldua1zerb1 | zaldua1zerb2 | zaldua1bez1 lease (HA) | zaldua3bez1 lease (no HA) |
+| ------------ | ------------ | ---------------------- | ------------------------- |
+| on           | on           | **zaldua1zerb1**       | **zaldua1zerb1**          |
+| off          | on           | **zaldua1zerb2**       | **none**                  |
+| off          | off          | **none**               | **none**                  |
+### A1 zaldua1zerb1 = ON |  zaldua1zerb2 = ON
+
 zaldua1zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb2:
+![[Pasted image 20260126212748.png]]
+### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = ON
+
+zaldua1zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb2:
+![[Pasted image 20260126212620.png]]
+### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = OFF
+
+zaldua1zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb2:
+![[Pasted image 20260126212620.png]]
+
+## zaldua2
+
+| zaldua2zerb1 | zaldua1zerb1 | zaldua2bez1 lease (HA) | zaldua3bez1 lease (no HA) |
+| ------------ | ------------ | ---------------------- | ------------------------- |
+| on           | on           | **zaldua2zerb1**       | **zaldua1zerb1**          |
+| on           | off          | **zaldua2zerb1**       | **none**                  |
+| off          | on           | **zaldua1zerb1**       | **zaldua1zerb1**          |
+| off          | off          | **none**               | **none**                  |
+### A1 zaldua2zerb1 = ON |  zaldua1zerb1 = ON
+
+zaldua2zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb1:
+![[Pasted image 20260126212620.png]]
+
+### A1 zaldua2zerb1 = ON |  zaldua1zerb1 = OFF
+
+zaldua2zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb1:
+![[Pasted image 20260126212620.png]]
+### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = ON
+
+zaldua2zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb1:
+![[Pasted image 20260126212620.png]]
+### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = OFF
+
+zaldua2zerb1:
+![[Pasted image 20260126212555.png]]
+
+zaldua1zerb1:
+![[Pasted image 20260126212620.png]]
+
 
 # Snapshot
 
