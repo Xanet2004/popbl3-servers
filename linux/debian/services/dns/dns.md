@@ -362,7 +362,7 @@ zaldua1zerb1 IN A 192.168.42.4
 zaldua1zerb2 IN A 192.168.42.5
 zaldua1bez1  IN A 192.168.42.10
 
-; Service aliases (opcionales pero útiles)
+; Service aliases (optional)
 dhcp1 IN CNAME zaldua1zerb1
 dhcp2 IN CNAME zaldua1zerb2
 smb1  IN CNAME zaldua1zerb1

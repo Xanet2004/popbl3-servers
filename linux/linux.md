@@ -91,21 +91,21 @@ Egin beharrekoak:
 	- [x] NAT sareak erabili beharrean, “Ariketak egiteko topologia barne edo intnet sareak” irudiko topologia erabili
 		- [x] Aldaketa burutzeko erabilitako VboxManage komando guztiak zerrendatu eta azaldu
 - 4.4.2 KEA instalazioa
-	- [ ] Ondorengo zerbitzarietan IPv4, High Availability (HA) eta DDNS funtzioak eskaintzeko beharrezko KEA moduloen instalazioa burutu eta pauso guztiak, komando eta guzti, zerrendatu (4.3 atalean bezala)
+	- [x] Ondorengo zerbitzarietan IPv4, High Availability (HA) eta DDNS funtzioak eskaintzeko beharrezko KEA moduloen instalazioa burutu eta pauso guztiak, komando eta guzti, zerrendatu (4.3 atalean bezala)
 		- abizena1zerb1
 		- abizena1zerb2
 		- abizena2zerb1
 - 4.4.3 KEA IPv4 konfigurazioa
-	- [ ] ISC dhcp server erabiliz egin den azpisare konfigurazio berdina burutu
-		- [ ] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
-		- [ ] Komandoak zerrendatu
+	- [x] ISC dhcp server erabiliz egin den azpisare konfigurazio berdina burutu
+		- [x] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
+		- [x] Komandoak zerrendatu
 - 4.4.4 KEA High Availability (HA)
-	- [ ] ISC dhcp server erabiliz egin den failover konfigurazio berdina burutu
-		- [ ] KEAren HA eta ISCren failover funtzioen arteko ezberdintasunak azaldu
-		- [ ] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
-		- [ ] Komandoak zerrendatu
+	- [x] ISC dhcp server erabiliz egin den failover konfigurazio berdina burutu
+		- [ ] `KEAren HA eta ISCren failover funtzioen arteko ezberdintasunak azaldu`
+		- [x] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
+		- [x] Komandoak zerrendatu
 - 4.4.5 KEA DDNS
-	- [ ] ISC dhcp server erabiliz DDNS funtzioa eskaintzeko egin den Bind9 eta ISC dhcp server zerbitzuen arteko konfigurazio berdina KEA erabiliz burutu
-		- [ ] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
-		- [ ] Komandoak zerrendatu
-		- [ ] Bezeroek zerbitzarien bitartez lortu beharko dute sare konfigurazioa eta ebatzi beharko dituzte dns eskariak
+	- [x] ISC dhcp server erabiliz DDNS funtzioa eskaintzeko egin den Bind9 eta ISC dhcp server zerbitzuen arteko konfigurazio berdina KEA erabiliz burutu
+		- [x] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
+		- [x] Komandoak zerrendatu
+		- [x] Bezeroek zerbitzarien bitartez lortu beharko dute sare konfigurazioa eta ebatzi beharko dituzte dns eskariak

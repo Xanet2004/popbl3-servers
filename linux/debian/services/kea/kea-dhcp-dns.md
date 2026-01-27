@@ -69,7 +69,7 @@ chmod 750 /etc/bind/keys
 Include the key and add the key on every master zones.
 ### zaldua1zerb1
 
-```powershell title="zaldua1zerb1 and zaldua2zerb1 - /etc/bind/named.conf.local"
+```powershell title="zaldua1zerb1 - /etc/bind/named.conf.local"
 / =====================
 // zaldua1zerb1
 // /etc/bind/named.conf.local
@@ -161,7 +161,7 @@ zone "7.168.192.in-addr.arpa" IN {
 
 ### zaldua2zerb1
 
-```powershell title="zaldua1zerb1 and zaldua2zerb1 - /etc/bind/named.conf.local"
+```powershell title="zaldua2zerb1 - /etc/bind/named.conf.local"
 // =====================
 // zaldua2zerb1
 // /etc/bind/named.conf.local
@@ -844,26 +844,435 @@ cp /etc/kea/kea-dhcp-ddns.conf /etc/kea/kea-dhcp-ddns.conf.bak
 >         - Standby: `zaldua1zerb1` at `http://192.168.4.4:8002/`
 > - Defines **Subnet ID 2:** `192.168.4.0/22` pool `4.100-4.200`, options (router/DNS/domain/broadcast), reservation `zaldua2bez1 → 192.168.4.10`, tied to HA relationship `zaldua2zerb1-zaldua2`.
 
+# DNS Zones
+
+Now we need to remove client DNS records.
+If we don't do this, KEA will throw DHCID errors.
+
+## zaldua1zerb1
+
+### zalduabat.eus
+
+```powershell title="zaldua1zerb1 - /etc/bind/zones/db.zalduabat.eus"
+$TTL 86400
+@   IN  SOA ns1.zalduabat.eus. admin.zalduabat.eus. (
+        2026012501 ; serial
+        3600       ; refresh
+        900        ; retry
+        604800     ; expire
+        86400      ; negative ttl
+)
+
+; Nameservers
+@   IN  NS  ns1.zalduabat.eus.
+@   IN  NS  ns2.zalduabat.eus.
+
+; Glue A records for NS
+ns1 IN  A   192.168.42.4
+ns2 IN  A   192.168.42.5
+
+; Hosts (building 1)
+zaldua1zerb1 IN A 192.168.42.4
+zaldua1zerb2 IN A 192.168.42.5
+
+; zaldua1bez1  IN A 192.168.42.10
+
+; Service aliases (optional)
+dhcp1 IN CNAME zaldua1zerb1
+dhcp2 IN CNAME zaldua1zerb2
+smb1  IN CNAME zaldua1zerb1
+smb2  IN CNAME zaldua1zerb2
+```
+
+```powershell title="zaldua1zerb1 - /etc/bind/zones/db.192.168.42"
+$TTL 86400
+@   IN  SOA ns1.zalduabat.eus. admin.zalduabat.eus. (
+        2026012501
+        3600
+        900
+        604800
+        86400
+)
+
+@   IN  NS  ns1.zalduabat.eus.
+@   IN  NS  ns2.zalduabat.eus.
+
+4   IN  PTR zaldua1zerb1.zalduabat.eus.
+5   IN  PTR zaldua1zerb2.zalduabat.eus.
+
+;10  IN  PTR zaldua1bez1.zalduabat.eus.
+```
+
+### zalduahiru.eus
+
+```powershell title="zaldua3zerb1 - /etc/bind/zones/db.zalduahiru.eus"
+$TTL 86400
+@   IN  SOA ns1.zalduahiru.eus. admin.zalduahiru.eus. (
+        2026012501
+        3600
+        900
+        604800
+        86400
+)
+
+@   IN  NS  ns1.zalduahiru.eus.
+@   IN  NS  ns2.zalduahiru.eus.
+
+; ns1 = zaldua1zerb1 (master en esta red)
+; ns2 = zaldua3zerb1 (slave)
+ns1 IN  A   192.168.1.132
+ns2 IN  A   192.168.1.133
+
+; Hosts (building 3)
+zaldua1zerb1 IN A 192.168.1.132
+zaldua3zerb1 IN A 192.168.1.133
+
+;zaldua3bez1  IN A 192.168.1.140
+
+; Service aliases (opcionales)
+www  IN CNAME zaldua3zerb1
+smb  IN CNAME zaldua3zerb1
+dhcp IN CNAME zaldua1zerb1
+```
+
+```powershell title="zaldua3zerb1 - /etc/bind/zones/db.192.168.1"
+$TTL 86400
+@   IN  SOA ns1.zalduahiru.eus. admin.zalduahiru.eus. (
+        2026012501
+        3600
+        900
+        604800
+        86400
+)
+
+@   IN  NS  ns1.zalduahiru.eus.
+@   IN  NS  ns2.zalduahiru.eus.
+
+132 IN PTR zaldua1zerb1.zalduahiru.eus.
+133 IN PTR zaldua3zerb1.zalduahiru.eus.
+
+;140 IN PTR zaldua3bez1.zalduahiru.eus.
+```
+
+## zaldua2zerb1
+
+### zalduabi.eus
+
+```powershell title="zaldua2zerb1 - /etc/bind/zones/db.zalduabi.eus"
+$TTL 86400
+@   IN  SOA ns1.zalduabi.eus. admin.zalduabi.eus. (
+        2026012501
+        3600
+        900
+        604800
+        86400
+)
+
+@   IN  NS  ns1.zalduabi.eus.
+@   IN  NS  ns2.zalduabi.eus.
+
+; ns1 = zaldua2zerb1 (master)
+; ns2 = zaldua1zerb1 (slave en esta zona)
+ns1 IN  A   192.168.4.5
+ns2 IN  A   192.168.4.4
+
+; Hosts (building 2)
+zaldua2zerb1 IN A 192.168.4.5
+zaldua1zerb1 IN A 192.168.4.4
+
+;zaldua2bez1  IN A 192.168.4.10
+
+; Service aliases (opcionales)
+www  IN CNAME zaldua2zerb1
+smb  IN CNAME zaldua2zerb1
+dhcp IN CNAME zaldua2zerb1
+```
+
+```powershell title="zaldua2zerb1 - /etc/bind/zones/db.192.168.4"
+$TTL 86400
+@   IN  SOA ns1.zalduabi.eus. admin.zalduabi.eus. (
+        2026012501
+        3600
+        900
+        604800
+        86400
+)
+
+@   IN  NS  ns1.zalduabi.eus.
+@   IN  NS  ns2.zalduabi.eus.
+
+4   IN  PTR zaldua1zerb1.zalduabi.eus.
+5   IN  PTR zaldua2zerb1.zalduabi.eus.
+
+;10  IN  PTR zaldua2bez1.zalduabi.eus.
+```
+
+# Change Zone file paths
+
+KEA DDNS can't directly override zone values if they are stored in the usual /etc/bind/ folder. This is why we need to move them to a more permissive folder. /var/lib/bind/dynamic.
+
+## zaldua1zerb1
+
+```powershell title="zaldua1zerb1 - create folder"
+mkdir -p /var/lib/bind/dynamic
+chown bind:bind /var/lib/bind/dynamic
+chmod 750 /var/lib/bind/dynamic
+```
+
+```powershell title="zaldua1zerb1 - move files"
+cp /etc/bind/zones/db.zalduabat.eus  /var/lib/bind/dynamic/db.zalduabat.eus
+cp /etc/bind/zones/db.192.168.42     /var/lib/bind/dynamic/db.192.168.42
+cp /etc/bind/zones/db.192.168.43     /var/lib/bind/dynamic/db.192.168.43
+
+cp /etc/bind/zones/db.zalduahiru.eus /var/lib/bind/dynamic/db.zalduahiru.eus
+cp /etc/bind/zones/db.192.168.1      /var/lib/bind/dynamic/db.192.168.1
+
+chown bind:bind /var/lib/bind/dynamic/db.zalduabat.eus \
+                /var/lib/bind/dynamic/db.192.168.42 \
+                /var/lib/bind/dynamic/db.192.168.43 \
+                /var/lib/bind/dynamic/db.zalduahiru.eus \
+                /var/lib/bind/dynamic/db.192.168.1
+
+chmod 640 /var/lib/bind/dynamic/db.zalduabat.eus \
+          /var/lib/bind/dynamic/db.192.168.42 \
+          /var/lib/bind/dynamic/db.192.168.43 \
+          /var/lib/bind/dynamic/db.zalduahiru.eus \
+          /var/lib/bind/dynamic/db.192.168.1
+```
+
+Now we need to update and change the paths on the DNS named.conf.local file.
+
+```powershell title="zaldua1zerb1 - /etc/bind/named.conf.local"
+/ =====================
+// zaldua1zerb1
+// /etc/bind/named.conf.local
+// =====================
+
+include "/etc/bind/keys/kea-ddns-key.conf";
+
+// PRIMARY (MASTER) - zalduabat.eus (zaldua1)
+zone "zalduabat.eus" IN {
+    type master;
+    file "/var/lib/bind/dynamic/db.zalduabat.eus";
+    allow-transfer { 192.168.42.5; };
+    also-notify    { 192.168.42.5; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "42.168.192.in-addr.arpa" IN {
+    type master;
+    file "/var/lib/bind/dynamic/db.192.168.42";
+    allow-transfer { 192.168.42.5; };
+    also-notify    { 192.168.42.5; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "43.168.192.in-addr.arpa" IN {
+    type master;
+    file "/var/lib/bind/dynamic/db.192.168.43";
+    allow-transfer { 192.168.42.5; };
+    also-notify    { 192.168.42.5; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+// PRIMARY (MASTER) - zalduahiru.eus (zaldua3)
+zone "zalduahiru.eus" IN {
+    type master;
+    file "/var/lib/bind/dynamic/db.zalduahiru.eus";
+    allow-transfer { 192.168.1.133; };
+    also-notify    { 192.168.1.133; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "1.168.192.in-addr.arpa" IN {
+    type master;
+    file "/var/lib/bind/dynamic/db.192.168.1";
+    allow-transfer { 192.168.1.133; };
+    also-notify    { 192.168.1.133; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+// SECONDARY (SLAVE) - zalduabi.eus (zaldua2)  (MASTER: zaldua2zerb1)
+zone "zalduabi.eus" IN {
+    type slave;
+    masters { 192.168.4.5; }; // zaldua2zerb1
+    file "/var/cache/bind/slave.db.zalduabi.eus";
+};
+
+zone "4.168.192.in-addr.arpa" IN {
+    type slave;
+    masters { 192.168.4.5; };
+    file "/var/cache/bind/slave.db.192.168.4";
+};
+
+zone "5.168.192.in-addr.arpa" IN {
+    type slave;
+    masters { 192.168.4.5; };
+    file "/var/cache/bind/slave.db.192.168.5";
+};
+
+zone "6.168.192.in-addr.arpa" IN {
+    type slave;
+    masters { 192.168.4.5; };
+    file "/var/cache/bind/slave.db.192.168.6";
+};
+
+zone "7.168.192.in-addr.arpa" IN {
+    type slave;
+    masters { 192.168.4.5; };
+    file "/var/cache/bind/slave.db.192.168.7";
+};
+```
+
+## zaldua2zerb1
+
+```powershell title="zaldua2zerb1 - create folder"
+mkdir -p /var/lib/bind/dynamic
+chown bind:bind /var/lib/bind/dynamic
+chmod 750 /var/lib/bind/dynamic
+```
+
+```powershell title="zaldua2zerb1 - move files"
+cp /etc/bind/zones/db.zalduabi.eus /var/lib/bind/dynamic/db.zalduabi.eus
+cp /etc/bind/zones/db.192.168.4    /var/lib/bind/dynamic/db.192.168.4
+cp /etc/bind/zones/db.192.168.5    /var/lib/bind/dynamic/db.192.168.5
+cp /etc/bind/zones/db.192.168.6    /var/lib/bind/dynamic/db.192.168.6
+cp /etc/bind/zones/db.192.168.7    /var/lib/bind/dynamic/db.192.168.7
+
+chown bind:bind /var/lib/bind/dynamic/db.zalduabi.eus \
+                /var/lib/bind/dynamic/db.192.168.4 \
+                /var/lib/bind/dynamic/db.192.168.5 \
+                /var/lib/bind/dynamic/db.192.168.6 \
+                /var/lib/bind/dynamic/db.192.168.7
+
+chmod 640 /var/lib/bind/dynamic/db.zalduabi.eus \
+          /var/lib/bind/dynamic/db.192.168.4 \
+          /var/lib/bind/dynamic/db.192.168.5 \
+          /var/lib/bind/dynamic/db.192.168.6 \
+          /var/lib/bind/dynamic/db.192.168.7
+```
+
+```powershell title="zaldua2zerb1 - /etc/bind/named.conf.local"
+// =====================
+// zaldua2zerb1
+// /etc/bind/named.conf.local
+// =====================
+
+include "/etc/bind/keys/kea-ddns-key.conf";
+
+// PRIMARY (MASTER) - zalduabi.eus
+zone "zalduabi.eus" IN {
+    type master;
+    file "/etc/bind/zones/db.zalduabi.eus";
+    allow-transfer { 192.168.4.4; };
+    also-notify    { 192.168.4.4; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+// Reverse 192.168.4.0/22 => /24s 4,5,6,7
+zone "4.168.192.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/zones/db.192.168.4";
+    allow-transfer { 192.168.4.4; };
+    also-notify    { 192.168.4.4; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "5.168.192.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/zones/db.192.168.5";
+    allow-transfer { 192.168.4.4; };
+    also-notify    { 192.168.4.4; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "6.168.192.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/zones/db.192.168.6";
+    allow-transfer { 192.168.4.4; };
+    also-notify    { 192.168.4.4; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+
+zone "7.168.192.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/zones/db.192.168.7";
+    allow-transfer { 192.168.4.4; };
+    also-notify    { 192.168.4.4; };
+    notify yes;
+    allow-update { key "kea-ddns-key"; };
+};
+```
 # Restart service
 
-```powershell title="restart KEA"
+```powershell title="restart services"
+systemctl restart bind9
 systemctl restart kea-ctrl-agent
 systemctl restart kea-dhcp4-server
 systemctl restart kea-dhcp-ddns-server
 ```
 
-```powershell title="restart KEA"
+```powershell title="restart services"
+systemctl status bind9
 systemctl status kea-ctrl-agent
 systemctl status kea-dhcp4-server
 systemctl status kea-dhcp-ddns-server
 ```
 
+# Check and tests
+
+## KEA DDNS logs
+
+```powershell title="check logs"
+journalctl -u kea-dhcp-ddns-server -f
+```
+
+zaldua1zerb1:
+	zaldua1bez1:
+![[Pasted image 20260127235214.png]]
+	zaldua3bez1:
+![[Pasted image 20260127235318.png]]
+
+zaldua2zerb1:
+	zaldua2bez1:
+![[Pasted image 20260127235043.png]]
+
+## DNS requests
+
+zaldua1bez1:
+![[Pasted image 20260127235853.png]]
+![[Pasted image 20260128000018.png]]
+
+zaldua2bez1:
+![[Pasted image 20260128000206.png]]
+![[Pasted image 20260128000250.png]]
+
+zaldua3bez1:
+![[Pasted image 20260128000402.png]]
+![[Pasted image 20260128000429.png]]
+
+> Note
+> Command to install dig: `apt install dnsutils`
 # Snapshot
 
 ```powershell title="snapshot"
 VBoxManage snapshot "zaldua1zerb1" take "05_3_kea_ddns_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS."
 VBoxManage snapshot "zaldua1zerb2" take "05_3_kea_ddns_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS."
 VBoxManage snapshot "zaldua2zerb1" take "05_3_kea_ddns_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS."
+#---
+VBoxManage snapshot "zaldua3zerb1" take "05_3_ddns_backup" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS on the DNS servers. Just in case."
+VBoxManage snapshot "zaldua1bez1" take "05_3_ddns_backup" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS on the DNS servers. Just in case."
+VBoxManage snapshot "zaldua2bez1" take "05_3_ddns_backup" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS on the DNS servers. Just in case."
+VBoxManage snapshot "zaldua3bez1" take "05_3_ddns_backup" --description="This is the virtual machine after configuring a KEA DHCP with HA and DDNS on the DNS servers. Just in case."
 ```
 
 > Note
