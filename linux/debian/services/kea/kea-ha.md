@@ -117,16 +117,16 @@ Now that we have KEA High Availability active this should be the correct behavio
 
 zaldua1zerb1:
 	zaldua1bez1:
-![[Pasted image 20260126212555.png]]
+![[/linux/debian/services/kea/img/kea-ha-01.png]]
 	zaldua3bez1:
-![[Pasted image 20260126215850.png]]
+![[/linux/debian/services/kea/img/kea-ha-04.png]]
 zaldua1zerb2:
-![[Pasted image 20260126212748.png]]
+![[/linux/debian/services/kea/img/kea-ha-03.png]]
 ### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = ON
 
 zaldua1zerb2:
 	zaldua1bez1:
-![[Pasted image 20260127172319.png]]
+![[/linux/debian/services/kea/img/kea-ha-05.png]]
 > Note
 > When 10 clients tries to connect to zaldua1zerb1, the secondary server will stop waiting for zaldua1zerb1. And it will take the lead.
 
@@ -141,17 +141,17 @@ zaldua1zerb2:
 
 zaldua2zerb1:
 	zaldua2bez1:
-![[Pasted image 20260127173030.png]]
+![[/linux/debian/services/kea/img/kea-ha-07.png]]
 
 zaldua1zerb1:
-![[Pasted image 20260127173200.png]]
+![[/linux/debian/services/kea/img/kea-ha-08.png]]
 > Note
 > zaldua1zerb1 receives broadcast IP request but zaldua2zerb1 applies offers the address.
 ### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = ON
 
 zaldua1zerb1:
 	zaldua2bez1:
-![[Pasted image 20260127173535.png]]
+![[/linux/debian/services/kea/img/kea-ha-09.png]]
 > Note
 > Same as before, when 10 clients tries connecting with zaldua2zerb1, zaldua1zerb1 will stop trying to connect with the primary and it will take the lead.
 

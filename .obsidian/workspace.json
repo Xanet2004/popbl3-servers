@@ -38,20 +38,6 @@
             }
           },
           {
-            "id": "ea16dcbb524fd5ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/debian/services/kea/kea-basic-conf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "kea-basic-conf"
-            }
-          },
-          {
             "id": "960978b294dda3ed",
             "type": "leaf",
             "state": {
@@ -63,6 +49,20 @@
               },
               "icon": "lucide-file",
               "title": "kea-installation"
+            }
+          },
+          {
+            "id": "ea16dcbb524fd5ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/debian/services/kea/kea-basic-conf.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "kea-basic-conf"
             }
           },
           {
@@ -80,7 +80,7 @@
             }
           },
           {
-            "id": "26b7cccfd3714111",
+            "id": "e06e6f3b77bc6471",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -120,7 +120,7 @@
       {
         "id": "a5f984716da4e94a",
         "type": "tabs",
-        "dimension": 58.20271682340647,
+        "dimension": 73.57992073976222,
         "children": [
           {
             "id": "838fbad925de53bf",
@@ -165,30 +165,9 @@
         ]
       },
       {
-        "id": "b687e74348f2bed6",
-        "type": "tabs",
-        "dimension": 20.898641588296766,
-        "children": [
-          {
-            "id": "ca0a5550eb86e62d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "todo.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "todo"
-            }
-          }
-        ]
-      },
-      {
         "id": "1d8729ec2d41ceea",
         "type": "tabs",
-        "dimension": 20.898641588296766,
+        "dimension": 26.420079260237788,
         "children": [
           {
             "id": "20a9395f42c206f1",
@@ -309,24 +288,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "26b7cccfd3714111",
+  "active": "e06e6f3b77bc6471",
   "lastOpenFiles": [
-    "linux/debian/services/kea/kea-ipv4.md",
-    "linux/debian/services/kea/kea-ha.md",
-    "linux/debian/services/kea/kea-dhcp-dns.md",
-    "linux/debian/services/kea/kea.md",
-    "Pasted image 20260127173535.png",
-    "Pasted image 20260127173200.png",
-    "Pasted image 20260127173030.png",
-    "Pasted image 20260127173023.png",
-    "Pasted image 20260127172319.png",
-    "linux/linux.md",
-    "linux/debian/services/kea/kea-installation.md",
-    "Pasted image 20260126215850.png",
-    "Pasted image 20260126212748.png",
-    "Pasted image 20260126212620.png",
-    "Pasted image 20260126212555.png",
     "linux/debian/services/kea/kea-basic-conf.md",
+    "linux/debian/services/kea/kea-installation.md",
+    "linux/debian/services/kea/kea-ha.md",
+    "linux/debian/services/kea/kea.md",
+    "linux/debian/services/kea/kea-ipv4.md",
+    "linux/debian/services/kea/kea-dhcp-dns.md",
+    "linux/debian/services/kea/img/kea-ha-09.png",
+    "linux/debian/services/kea/img/kea-ha-08.png",
+    "linux/debian/services/kea/img/kea-ha-07.png",
+    "linux/debian/services/kea/img/kea-ha-06.png",
+    "linux/debian/services/kea/img/kea-ha-05.png",
+    "linux/debian/services/kea/img/kea-ha-04.png",
+    "linux/debian/services/kea/img/kea-ha-03.png",
+    "linux/debian/services/kea/img/kea-ha-02.png",
+    "linux/debian/services/kea/img/kea-ha-01.png",
+    "linux/linux.md",
     "linux/debian/services/configuration-files/etc/kea/kea-dhcp4.conf.md",
     "linux/debian/services/configuration-files/etc/kea/kea-ctrl-agent.conf.md",
     "linux/debian/services/configuration-files/etc/kea",
