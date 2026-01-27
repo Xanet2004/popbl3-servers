@@ -243,7 +243,7 @@ cp /etc/kea/kea-dhcp-ddns.conf /etc/kea/kea-dhcp-ddns.conf.bak
       {
         "name": "kea-ddns-key",
         "algorithm": "HMAC-SHA256",
-        "secret": "PEGAR_AQUI_EL_SECRET_BASE64"
+        "secret": "+Xljx6box6nh3Ta1KnCO6/k9KoBf+eSvskUssCeyYp0="
       }
     ],
 
@@ -338,7 +338,7 @@ cp /etc/kea/kea-dhcp-ddns.conf /etc/kea/kea-dhcp-ddns.conf.bak
       {
         "name": "kea-ddns-key",
         "algorithm": "HMAC-SHA256",
-        "secret": "PEGAR_AQUI_EL_SECRET_BASE64"
+        "secret": "+Xljx6box6nh3Ta1KnCO6/k9KoBf+eSvskUssCeyYp0="
       }
     ],
 
@@ -393,7 +393,7 @@ cp /etc/kea/kea-dhcp-ddns.conf /etc/kea/kea-dhcp-ddns.conf.bak
       {
         "name": "kea-ddns-key",
         "algorithm": "HMAC-SHA256",
-        "secret": "PEGAR_AQUI_EL_SECRET_BASE64"
+        "secret": "+Xljx6box6nh3Ta1KnCO6/k9KoBf+eSvskUssCeyYp0="
       }
     ],
 
@@ -857,19 +857,6 @@ systemctl status kea-ctrl-agent
 systemctl status kea-dhcp4-server
 systemctl status kea-dhcp-ddns-server
 ```
-
-> Note
-> If every server throws this warning, follow the next steps.
-> Warning: *kea-dhcp-ddns-server.service: ConfigurationDirectory 'kea' already exists but the mode is different. (File system: 750 ConfigurationDirectoryMode: 755)*
- 
-# Kea mode warning
-
-Fix: https://lists.isc.org/mailman/htdig/kea-users/2025-June/005620.html
-
-> "This warning should not prevent Kea from functioning properly if you leave it as-is.
-> The proper way to get rid of the message is to add "ConfigurationDirectoryMode: 750" to the "[Service]" section, although you may want to wait for an official update to the systemd file."
-
-
 
 # Snapshot
 
