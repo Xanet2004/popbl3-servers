@@ -23,6 +23,15 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
 }
 ```
 
+> Note
+> - Runs the **Control Agent REST API** bound to **all interfaces** (`http-host: 0.0.0.0`) on **TCP 8000**.
+> - It does **not serve DHCP by itself**; it exposes an HTTP endpoint to send commands to Kea services.
+> - For DHCPv4 commands, it connects to the local Kea DHCP4 process via the **UNIX control socket** `/run/kea/kea4-ctrl-socket`.
+> - This means: clients/peers talk HTTP → Control Agent, and Control Agent talks locally → DHCP4 through the socket.
+
+> Note
+> Control agent will be listening at the port 8000, you want to use different ports on the configured DHCP zones not to interfere between them.
+
 ## zaldua1zerb2
 
 ```powershell title="KEA backup"
@@ -45,6 +54,11 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
 }
 ```
 
+> Note
+> - Exposes the Control Agent REST API **only on** `192.168.42.5` (so it’s reachable from the _zaldua1_ network) on **TCP 8000**.
+> - For DHCPv4 management, it forwards commands to the local DHCP4 daemon using `/run/kea/kea4-ctrl-socket`.
+> - If TCP 8000 is already used on this VM, you must change `http-port` here (and update any HA peer URLs that point to it).
+
 ## zaldua2zerb1
 
 ```powershell title="KEA backup"
@@ -66,6 +80,11 @@ cp /etc/kea/kea-ctrl-agent.conf /etc/kea/kea-ctrl-agent.conf.bak
   }
 }
 ```
+
+> Note
+> - Exposes the Control Agent REST API **only on** `192.168.4.5` (reachable from the _zaldua2_ network) on **TCP 8000**.
+> - Uses `/run/kea/kea4-ctrl-socket` to control the local DHCP4 server.
+> - Same rule: **one process per TCP port** on a VM—if something else is using 8000, change `http-port` and adjust HA peer URLs accordingly.
 
 # Restart service
 
@@ -93,7 +112,7 @@ Now that we have KEA High Availability active this should be the correct behavio
 | ------------ | ------------ | ---------------------- | ------------------------- |
 | on           | on           | **zaldua1zerb1**       | **zaldua1zerb1**          |
 | off          | on           | **zaldua1zerb2**       | **none**                  |
-| off          | off          | **none**               | **none**                  |
+
 ### A1 zaldua1zerb1 = ON |  zaldua1zerb2 = ON
 
 zaldua1zerb1:
@@ -105,63 +124,43 @@ zaldua1zerb2:
 ![[Pasted image 20260126212748.png]]
 ### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = ON
 
-zaldua1zerb1:
-![[Pasted image 20260126212555.png]]
-
 zaldua1zerb2:
-![[Pasted image 20260126212620.png]]
-### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = OFF
-
-zaldua1zerb1:
-![[Pasted image 20260126212555.png]]
-
-zaldua1zerb2:
-![[Pasted image 20260126212620.png]]
+	zaldua1bez1:
+![[Pasted image 20260127172319.png]]
+> Note
+> When 10 clients tries to connect to zaldua1zerb1, the secondary server will stop waiting for zaldua1zerb1. And it will take the lead.
 
 ## zaldua2
 
 | zaldua2zerb1 | zaldua1zerb1 | zaldua2bez1 lease (HA) | zaldua3bez1 lease (no HA) |
 | ------------ | ------------ | ---------------------- | ------------------------- |
 | on           | on           | **zaldua2zerb1**       | **zaldua1zerb1**          |
-| on           | off          | **zaldua2zerb1**       | **none**                  |
 | off          | on           | **zaldua1zerb1**       | **zaldua1zerb1**          |
-| off          | off          | **none**               | **none**                  |
+
 ### A1 zaldua2zerb1 = ON |  zaldua1zerb1 = ON
 
 zaldua2zerb1:
-![[Pasted image 20260126212555.png]]
+	zaldua2bez1:
+![[Pasted image 20260127173030.png]]
 
 zaldua1zerb1:
-![[Pasted image 20260126212620.png]]
-
-### A1 zaldua2zerb1 = ON |  zaldua1zerb1 = OFF
-
-zaldua2zerb1:
-![[Pasted image 20260126212555.png]]
-
-zaldua1zerb1:
-![[Pasted image 20260126212620.png]]
+![[Pasted image 20260127173200.png]]
+> Note
+> zaldua1zerb1 receives broadcast IP request but zaldua2zerb1 applies offers the address.
 ### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = ON
 
-zaldua2zerb1:
-![[Pasted image 20260126212555.png]]
-
 zaldua1zerb1:
-![[Pasted image 20260126212620.png]]
-### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = OFF
-
-zaldua2zerb1:
-![[Pasted image 20260126212555.png]]
-
-zaldua1zerb1:
-![[Pasted image 20260126212620.png]]
-
+	zaldua2bez1:
+![[Pasted image 20260127173535.png]]
+> Note
+> Same as before, when 10 clients tries connecting with zaldua2zerb1, zaldua1zerb1 will stop trying to connect with the primary and it will take the lead.
 
 # Snapshot
 
 ```powershell title="snapshot"
-VBoxManage snapshot "zaldua1zerb1" take "05_2_kea_basic_configuration" --description="This is the virtual machine after configuring a basic KEA DHCP."
-VBoxManage snapshot "zaldua2zerb1" take "05_2_kea_basic_configuration" --description="This is the virtual machine after configuring a basic KEA DHCP."
+VBoxManage snapshot "zaldua1zerb1" take "05_2_kea_ha_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA."
+VBoxManage snapshot "zaldua1zerb2" take "05_2_kea_ha_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA."
+VBoxManage snapshot "zaldua2zerb1" take "05_2_kea_ha_configuration" --description="This is the virtual machine after configuring a KEA DHCP with HA."
 ```
 
 > Note
