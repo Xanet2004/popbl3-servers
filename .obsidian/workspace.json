@@ -52,6 +52,18 @@
             }
           },
           {
+            "id": "a40d8d9dfa14264c",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "linux/debian/services/kea/img/kea-ddns-03.png"
+              },
+              "icon": "lucide-image",
+              "title": "kea-ddns-03"
+            }
+          },
+          {
             "id": "427f48ccea97eb44",
             "type": "leaf",
             "state": {
@@ -65,7 +77,8 @@
               "title": "kea-dhcp-dns"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -140,7 +153,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 206.50418853759766
+    "width": 317.50418853759766
   },
   "right": {
     "id": "ec2676a7eeefb2ee",
@@ -245,28 +258,29 @@
       "bases:Create new base": false
     }
   },
-  "active": "a04f4331a8dbef2e",
+  "active": "427f48ccea97eb44",
   "lastOpenFiles": [
-    "linux/debian/services/dns/dns.md",
+    "linux/debian/services/kea/img/kea-ddns-03.png",
+    "linux/debian/services/kea/img/kea-ddns-02.png",
+    "linux/debian/services/kea/img/kea-ddns-01.png",
+    "linux/debian/services/kea/kea-ha.md",
     "linux/debian/services/kea/kea.md",
     "linux/debian/services/kea/kea-dhcp-dns.md",
-    "linux/debian/services/kea/kea-ha.md",
+    "linux/debian/services/kea/img/kea-ddns-12.png",
+    "linux/debian/services/kea/img/kea-ddns-10.png",
+    "linux/debian/services/kea/img/kea-ddns-09.png",
+    "linux/debian/services/kea/img/kea-ddns-08.png",
+    "linux/debian/services/kea/img/kea-ddns-07.png",
+    "linux/debian/services/kea/img/kea-ddns-06.png",
+    "linux/debian/services/kea/img/kea-ddns-05.png",
+    "linux/debian/services/kea/img/kea-ddns-04.png",
+    "linux/linux.md",
+    "linux/debian/services/dns/dns.md",
     "linux/debian/services/kea/kea-ipv4.md",
     "linux/debian/services/kea/kea-basic-conf.md",
     "linux/debian/services/kea/kea-installation.md",
     "linux/debian/services/configuration-files/etc/kea/kea-ctrl-agent.conf.md",
     "linux/debian/services/configuration-files/etc/kea/kea-dhcp-ddns.conf.md",
-    "Pasted image 20260128000429.png",
-    "Pasted image 20260128000402.png",
-    "Pasted image 20260128000250.png",
-    "Pasted image 20260128000206.png",
-    "Pasted image 20260128000018.png",
-    "Pasted image 20260127235853.png",
-    "Pasted image 20260127235318.png",
-    "Pasted image 20260127235255.png",
-    "Pasted image 20260127235214.png",
-    "Pasted image 20260127235043.png",
-    "linux/linux.md",
     "linux/debian/services/configuration-files/etc/kea/kea-dhcp4.conf.md",
     "linux/debian/services/configuration-files/etc/kea",
     "linux/debian/services/configuration-files/etc",

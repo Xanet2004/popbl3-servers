@@ -1238,27 +1238,27 @@ journalctl -u kea-dhcp-ddns-server -f
 
 zaldua1zerb1:
 	zaldua1bez1:
-![[Pasted image 20260127235214.png]]
+![[/linux/debian/services/kea/img/kea-ddns-03.png]]
 	zaldua3bez1:
-![[Pasted image 20260127235318.png]]
+![[/linux/debian/services/kea/img/kea-ddns-05.png]]
 
 zaldua2zerb1:
 	zaldua2bez1:
-![[Pasted image 20260127235043.png]]
+![[/linux/debian/services/kea/img/kea-ddns-02.png]]
 
 ## DNS requests
 
 zaldua1bez1:
-![[Pasted image 20260127235853.png]]
-![[Pasted image 20260128000018.png]]
+![[/linux/debian/services/kea/img/kea-ddns-06.png]]
+![[/linux/debian/services/kea/img/kea-ddns-07.png]]
 
 zaldua2bez1:
-![[Pasted image 20260128000206.png]]
-![[Pasted image 20260128000250.png]]
+![[/linux/debian/services/kea/img/kea-ddns-08.png]]
+![[/linux/debian/services/kea/img/kea-ddns-09.png]]
 
 zaldua3bez1:
-![[Pasted image 20260128000402.png]]
-![[Pasted image 20260128000429.png]]
+![[/linux/debian/services/kea/img/kea-ddns-10.png]]
+![[/linux/debian/services/kea/img/kea-ddns-12.png]]
 
 > Note
 > Command to install dig: `apt install dnsutils`
