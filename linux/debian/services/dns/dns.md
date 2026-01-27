@@ -1,13 +1,13 @@
 # Tasks
 - **zaldua1zerb1**: 
-	- **PRIMARY** de `zalduabat.eus` y `zalduahiru.eus`, 
-	- **SECONDARY** de `zalduabi.eus`
+	- **PRIMARY** of `zalduabat.eus` and `zalduahiru.eus`, 
+	- **SECONDARY** of `zalduabi.eus`
 - **zaldua1zerb2**: 
-	- **SECONDARY** de `zalduabat.eus`
+	- **SECONDARY** of `zalduabat.eus`
 - **zaldua2zerb1**: 
-	- **PRIMARY** de `zalduabi.eus`
+	- **PRIMARY** of `zalduabi.eus`
 - **zaldua3zerb1**: 
-	- **SECONDARY** de `zalduahiru.eus`
+	- **SECONDARY** of `zalduahiru.eus`
 
 # DNS named.conf
 ## zaldua1zerb1
