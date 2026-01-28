@@ -24,9 +24,9 @@ Add-WindowsFeature -Name "dns" -IncludeAllSubFeature -IncludeManagementTools
 # True    No             Success        {DNS Server, DNS Server Tools}
 ```
 
-# GPC
+# GPMC
 
-```powershell title="servers - gpc installation"
+```powershell title="servers - gpmc installation"
 Add-WindowsFeature -Name "gpmc" -IncludeAllSubFeature -IncludeManagementTools
 # Success Restart Needed Exit Code      Feature Result
 # ------- -------------- ---------      --------------

@@ -23,7 +23,7 @@ New-ADOrganizationalUnit -Name "Students" -Path "DC=proiektuak,DC=edu"
 
 Template users make it easier to replicate other users with the same settings (GUI “copy user” feature).
 
-Is not necessary.
+They are not necessary though.
 
 ```powershell title="server1 - create template"
 New-ADUser -Name "TeacherTemplate" `
@@ -143,6 +143,26 @@ powershell -ExecutionPolicy Bypass -File "C:\Users\Administrator\scripts\ad\crea
 > imaritxalar@proiektuak.edu (or just enter)
 > 123456789aA@
 > n
+
+## Creating Groups
+
+```powershell title="server1 - create groups"
+New-ADGroup -Name "teachers" -SamAccountName "teachers" `
+  -GroupScope Global -GroupCategory Security `
+  -Path "OU=Teachers,DC=proiektuak,DC=edu"
+
+New-ADGroup -Name "students" -SamAccountName "students" `
+  -GroupScope Global -GroupCategory Security `
+  -Path "OU=Students,DC=proiektuak,DC=edu"
+```
+
+```powershell title="server1 - add users to the groups"
+# Add teachers to teachers group
+Add-ADGroupMember -Identity "teachers" -Members "xetxezarreta","igaritano","teachertemplate"
+
+# Add students to students group
+Add-ADGroupMember -Identity "students" -Members "xzaldua","imaritxalar","studenttemplate"
+```
 
 # Test
 

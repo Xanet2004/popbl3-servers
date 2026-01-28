@@ -33,7 +33,7 @@ All machines are on the same network:
 | **Username**         | Administrator       | Administrator       | Bezeroa           |
 | **Password**         | 123456789aA@        | 123456789aA@        | 123456789aA@      |
 | **Hostname**         | server1             | server2             | bezeroa           |
-| Domain               | proiektuak.edu      | pbl.proiektuak.edu  | -                 |
+| **Domain**           | proiektuak.edu      | pbl.proiektuak.edu  | -                 |
 | **Active Directory** | Yes                 | Yes                 | No                |
 | **DNS**              | Yes                 | Yes                 | No                |
 

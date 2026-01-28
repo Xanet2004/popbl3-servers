@@ -76,23 +76,14 @@ Normally, we would need to restart the computers to apply hostname changes. Howe
 
 ```powershell title="server1 - change hostname and restart"
 Rename-Computer -NewName server1
-
-# Restart
-# Rename-Computer -NewName server1 -Restart
 ```
 
 ```powershell title="server2 - change hostname and restart"
 Rename-Computer -NewName server2 -Restart
-
-# Restart
-# Rename-Computer -NewName server2 -Restart
 ```
 
 ```powershell title="client - change hostname and restart"
 Rename-Computer -NewName client -Restart
-
-# Restart
-# Rename-Computer -NewName client -Restart
 ```
 
 # Snapshot

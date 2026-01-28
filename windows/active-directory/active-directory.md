@@ -4,7 +4,7 @@ Configure root and child domains, organizational units, and users.
 | -------------------- | -------------- | ------------------ | ------- |
 | **Username**         | Administrator  | Administrator      | Bezeroa |
 | **Hostname**         | server1        | server2            | bezeroa |
-| Domain               | proiektuak.edu | pbl.proiektuak.edu | -       |
+| **Domain**           | proiektuak.edu | pbl.proiektuak.edu | -       |
 | **Active Directory** | Yes            | Yes                | No      |
 # Create new AD forest and domain
 
@@ -36,7 +36,7 @@ Define our server as DNS
 ```powershell title="server1 - set dns"
 Set-DnsClientServerAddress `
   -InterfaceAlias "Ethernet" `
-  -ServerAddresses 8.8.8.8 # For outside connectivity
+  -ServerAddresses 127.0.0.1
 ```
 
 ```powershell title="server1 - test ad"
