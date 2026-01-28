@@ -1,28 +1,29 @@
 Steps to install virtual machines.
 # Server 1
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-01.png)
+![Server 1 installation](./img/server1/server1-installation-01.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-02.png)
+![Server 1 installation](./img/server1/server1-installation-02.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-03.png)
+![Server 1 installation](./img/server1/server1-installation-03.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-04.png)
+![Server 1 installation](./img/server1/server1-installation-04.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-05.png)
+![Server 1 installation](./img/server1/server1-installation-05.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-06.png)
+![Server 1 installation](./img/server1/server1-installation-06.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-07.png)
+![Server 1 installation](./img/server1/server1-installation-07.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-08.png)
+![Server 1 installation](./img/server1/server1-installation-08.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-09.png)
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-10.png)
+![Server 1 installation](./img/server1/server1-installation-09.png)
 
-![Server 1 installation](server1-installation-11.png)
+![Server 1 installation](./img/server1/server1-installation-10.png)
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-12.png)
+![Server 1 installation](./img/server1/server1-installation-11.png)
+
+![Server 1 installation](./img/server1/server1-installation-12.png)
 
 # Server 2
 
@@ -32,23 +33,38 @@ Steps to install virtual machines.
 
 > Same steps as server1 until...
 
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-01.png)
+![Client installation](./img/client/client-installation-01.png)
 
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-02.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-03.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-04.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-05.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-06.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-07.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-08.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-09.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-10.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-11.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-12.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-13.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-14.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-15.png)
-![Server 1 installation](windows/vmachine-installation/img/client/client-installation-16.png)
+![Client installation](./img/client/client-installation-02.png)
+
+![Client installation](./img/client/client-installation-03.png)
+
+![Client installation](./img/client/client-installation-04.png)
+
+![Client installation](./img/client/client-installation-05.png)
+
+![Client installation](./img/client/client-installation-06.png)
+
+![Client installation](./img/client/client-installation-07.png)
+
+![Client installation](./img/client/client-installation-08.png)
+
+![Client installation](./img/client/client-installation-09.png)
+
+![Client installation](./img/client/client-installation-10.png)
+
+![Client installation](./img/client/client-installation-11.png)
+
+![Client installation](./img/client/client-installation-12.png)
+
+![Client installation](./img/client/client-installation-13.png)
+
+![Client installation](./img/client/client-installation-14.png)
+
+![Client installation](./img/client/client-installation-15.png)
+
+![Client installation](./img/client/client-installation-16.png)
+
 # After installation
 
 Once the machines are installed, we are going to take off the iso disks from the machines.
@@ -56,7 +72,7 @@ This way we are not reinstalling every time we turn on the machines.
 
 Turn off the machines and change order and disable Floppy and Optical devices.
 
-![Server 1 installation](windows/vmachine-installation/img/server1/server1-installation-after.png)
+![After installation](./img/server1/server1-installation-after.png)
 
 ```powershell title="snapshot after installations"
 VBoxManage snapshot "server1" take "01_installed" --description="This is the virtual machine after the installation."
