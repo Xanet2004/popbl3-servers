@@ -4,81 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "a51de821a6939888",
+        "id": "4c29b5631c574895",
         "type": "tabs",
         "children": [
           {
-            "id": "a04f4331a8dbef2e",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/linux.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "linux"
-            }
-          },
-          {
-            "id": "1d42ade1eae3ae2d",
+            "id": "b4060c4bdd972109",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/debian/services/dns/dns.md",
+                "file": "windows/windows.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dns"
+              "title": "windows"
             }
           },
           {
-            "id": "d7a6ff027f8a5808",
+            "id": "b8fc7eb2449ad0cf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/debian/services/kea/kea.md",
+                "file": "todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kea"
+              "title": "todo"
             }
           },
           {
-            "id": "a40d8d9dfa14264c",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "linux/debian/services/kea/img/kea-ddns-03.png"
-              },
-              "icon": "lucide-image",
-              "title": "kea-ddns-03"
-            }
-          },
-          {
-            "id": "427f48ccea97eb44",
+            "id": "c85997262b72b513",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/debian/services/kea/kea-dhcp-dns.md",
+                "file": "linux/debian/services/kea/kea-ha.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kea-dhcp-dns"
+              "title": "kea-ha"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -153,7 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 317.50418853759766
+    "width": 205.50418853759766
   },
   "right": {
     "id": "ec2676a7eeefb2ee",
@@ -258,27 +230,32 @@
       "bases:Create new base": false
     }
   },
-  "active": "427f48ccea97eb44",
+  "active": "c85997262b72b513",
   "lastOpenFiles": [
-    "linux/debian/services/kea/img/kea-ddns-03.png",
-    "linux/debian/services/kea/img/kea-ddns-02.png",
-    "linux/debian/services/kea/img/kea-ddns-01.png",
-    "linux/debian/services/kea/kea-ha.md",
+    "todo.md",
+    "windows/vmachine-installation/vmachine-installation.md",
+    "windows/windows.md",
+    "linux/linux.md",
     "linux/debian/services/kea/kea.md",
-    "linux/debian/services/kea/kea-dhcp-dns.md",
     "linux/debian/services/kea/img/kea-ddns-12.png",
+    "linux/debian/services/kea/kea-dhcp-dns.md",
     "linux/debian/services/kea/img/kea-ddns-10.png",
     "linux/debian/services/kea/img/kea-ddns-09.png",
     "linux/debian/services/kea/img/kea-ddns-08.png",
     "linux/debian/services/kea/img/kea-ddns-07.png",
     "linux/debian/services/kea/img/kea-ddns-06.png",
+    "linux/debian/services/kea/img/kea-ddns-02.png",
     "linux/debian/services/kea/img/kea-ddns-05.png",
-    "linux/debian/services/kea/img/kea-ddns-04.png",
-    "linux/linux.md",
-    "linux/debian/services/dns/dns.md",
+    "linux/debian/services/kea/img/kea-ddns-03.png",
     "linux/debian/services/kea/kea-ipv4.md",
-    "linux/debian/services/kea/kea-basic-conf.md",
+    "linux/debian/services/kea/kea-ha.md",
+    "linux/debian/services/kea/img/kea-ha-09.png",
     "linux/debian/services/kea/kea-installation.md",
+    "linux/vbox/networks-creation/networks-creation.md",
+    "linux/vbox/networks-creation/internal-networks.md",
+    "linux/vbox/networks-creation/nat-networks.md",
+    "linux/debian/services/dns/dns.md",
+    "linux/debian/services/kea/kea-basic-conf.md",
     "linux/debian/services/configuration-files/etc/kea/kea-ctrl-agent.conf.md",
     "linux/debian/services/configuration-files/etc/kea/kea-dhcp-ddns.conf.md",
     "linux/debian/services/configuration-files/etc/kea/kea-dhcp4.conf.md",
@@ -287,13 +264,11 @@
     "linux/debian/services/configuration-files",
     "linux/debian/services/isc-dhcp/isc-dhcp.md",
     "linux/debian/services/kea/img",
-    "todo.md",
     "linux/debian/service-installations/service-installations.md",
     "linux/vbox/clone/clone.md",
     "linux/debian/services/isc-dhcp/img",
     "linux/debian/services/dns",
     "linux/debian/basic-configurations/basic-configurations.md",
-    "linux/vbox/networks-creation/networks-creation.md",
     "linux/debian/services/kea",
     "linux/vbox/machines-creation/machines-creation.md",
     "linux/debian/machines-installation/machines-installation.md",
@@ -303,9 +278,6 @@
     "linux/debian/services",
     "linux/debian/service-installations.md",
     "linux/debian/basic-configurations.md",
-    "linux/vbox/networks-creation/internal-networks.md",
-    "linux/vbox/networks-creation/nat-networks.md",
-    "windows/vmachine-creation/vmachine-network-creation.md",
     "windows/presentation/presentation-graph.canvas"
   ]
 }

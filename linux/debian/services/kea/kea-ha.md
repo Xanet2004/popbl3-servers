@@ -1,5 +1,91 @@
 This is the KEA High Availability configuration for the activity.
 
+# KEA HA vs ISC Failover
+
+**KEA HA** is the **modern replacement** provided by ISC for Kea DHCP.
+
+### How it works
+
+- HA is implemented as a **Kea hook library** (`libdhcp_ha.so`)
+- Servers do **not synchronize leases directly** with each other.
+- Instead, both servers use a **shared backend**:
+    - PostgreSQL
+    - MySQL
+    - (or Cassandra in some designs)
+
+The database becomes the **single source of truth**.
+
+### Operating modes
+
+- **Hot-Standby**
+- **Load-Balancing**
+
+(Conceptually similar to ISC Failover, but implemented very differently.)
+
+### Lease handling
+
+- Leases are written to the **shared database**.
+- Both servers read/write from the same backend.
+- HA communication is mainly used for:
+    - Health checks
+    - State coordination
+    - Deciding which server should answer requests
+
+There is **no per-lease synchronization over the network** between servers.
+
+### Characteristics
+
+- Loose coupling between DHCP servers
+- No custom failover protocol for lease replication
+- Easier recovery after failures
+- Can be extended to **more complex topologies**
+- Better observability and control (REST API, hooks, logging)
+
+---
+
+## 3. Key architectural differences
+
+| Aspect        | ISC DHCP Failover        | KEA High Availability           |
+| ------------- | ------------------------ | ------------------------------- |
+| Technology    | Legacy ISC DHCP          | Modern Kea DHCP                 |
+| Lease sync    | Direct server-to-server  | Shared database                 |
+| Communication | Custom failover protocol | Lightweight HA control messages |
+| Coupling      | Tight                    | Loose                           |
+| Scalability   | Fixed pair (2 servers)   | More flexible                   |
+| Recovery      | Complex state machines   | Database-driven                 |
+| Extensibility | Very limited             | Hook-based, modular             |
+
+---
+
+## 4. Why ISC Failover was abandoned
+
+ISC DHCP Failover:
+
+- Was hard to maintain
+    
+- Had complex and fragile state transitions
+    
+- Could desynchronize under network issues
+    
+- Could not scale or evolve easily
+    
+
+KEA HA was designed to:
+
+- Be **simpler and more reliable**
+    
+- Use **standard databases**
+    
+- Separate DHCP logic from HA logic
+    
+- Fit modern infrastructure (containers, APIs, orchestration)
+    
+
+---
+
+## 5. One-sentence summary (good for exams / docs)
+
+> **ISC DHCP Failover synchronizes leases directly between two tightly coupled servers using a custom protocol, while KEA High Availability relies on a shared database as the single source of truth and uses lightweight coordination for failover decisions.**
 # Configuration
 ## zaldua1zerb1
 
@@ -122,7 +208,7 @@ zaldua1zerb1:
 ![[/linux/debian/services/kea/img/kea-ha-04.png]]
 zaldua1zerb2:
 ![[/linux/debian/services/kea/img/kea-ha-03.png]]
-### A1 zaldua1zerb1 = OFF |  zaldua1zerb2 = ON
+### A2 zaldua1zerb1 = OFF |  zaldua1zerb2 = ON
 
 zaldua1zerb2:
 	zaldua1bez1:
@@ -137,7 +223,7 @@ zaldua1zerb2:
 | on           | on           | **zaldua2zerb1**       | **zaldua1zerb1**          |
 | off          | on           | **zaldua1zerb1**       | **zaldua1zerb1**          |
 
-### A1 zaldua2zerb1 = ON |  zaldua1zerb1 = ON
+### B1 zaldua2zerb1 = ON |  zaldua1zerb1 = ON
 
 zaldua2zerb1:
 	zaldua2bez1:
@@ -147,7 +233,7 @@ zaldua1zerb1:
 ![[/linux/debian/services/kea/img/kea-ha-08.png]]
 > Note
 > zaldua1zerb1 receives broadcast IP request but zaldua2zerb1 applies offers the address.
-### A1 zaldua2zerb1 = OFF |  zaldua1zerb1 = ON
+### B2 zaldua2zerb1 = OFF |  zaldua1zerb1 = ON
 
 zaldua1zerb1:
 	zaldua2bez1:

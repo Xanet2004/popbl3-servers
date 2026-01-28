@@ -17,7 +17,9 @@ apt install -y kea-dhcp4-server kea-ctrl-agent kea-dhcp-ddns-server kea-admin
 ![[/linux/debian/services/kea/img/kea-01.png]]
 
 ```powershell title="check KEA status"
-systemctl status kea-ctrl-agent.service
+systemctl status kea-dhcp4-server
+systemctl status kea-ctrl-agent
+systemctl status kea-dhcp-ddns-server
 ```
 
 # Snapshot

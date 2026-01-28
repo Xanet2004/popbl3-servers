@@ -89,7 +89,7 @@ This document will explain how to migrate from using ISC-DHCP-SERVER to KEA DHCP
 Egin beharrekoak:
 - 4.4.1 Barne sareak (intnet)
 	- [x] NAT sareak erabili beharrean, “Ariketak egiteko topologia barne edo intnet sareak” irudiko topologia erabili
-		- [x] Aldaketa burutzeko erabilitako VboxManage komando guztiak zerrendatu eta azaldu
+			- [x] Aldaketa burutzeko erabilitako VboxManage komando guztiak zerrendatu eta azaldu
 - 4.4.2 KEA instalazioa
 	- [x] Ondorengo zerbitzarietan IPv4, High Availability (HA) eta DDNS funtzioak eskaintzeko beharrezko KEA moduloen instalazioa burutu eta pauso guztiak, komando eta guzti, zerrendatu (4.3 atalean bezala)
 		- abizena1zerb1
@@ -101,7 +101,7 @@ Egin beharrekoak:
 		- [x] Komandoak zerrendatu
 - 4.4.4 KEA High Availability (HA)
 	- [x] ISC dhcp server erabiliz egin den failover konfigurazio berdina burutu
-		- [ ] `KEAren HA eta ISCren failover funtzioen arteko ezberdintasunak azaldu`
+		- [x] `KEAren HA eta ISCren failover funtzioen arteko ezberdintasunak azaldu`
 		- [x] Egin behar izan diren aldaketak eta jarraitutako pausoak azaldu
 		- [x] Komandoak zerrendatu
 - 4.4.5 KEA DDNS
