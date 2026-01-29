@@ -4,19 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "4c29b5631c574895",
+        "id": "becb12601628efc4",
         "type": "tabs",
         "children": [
           {
-            "id": "b4060c4bdd972109",
+            "id": "0f2db7b2b66032ef",
             "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "preview",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "2aeee3f2453448f7",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/linux.md",
+                "mode": "preview",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "linux"
+            }
+          },
+          {
+            "id": "de1ddf1a29149712",
+            "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "windows/windows.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "windows"
             }
@@ -201,13 +235,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "b4060c4bdd972109",
+  "active": "0f2db7b2b66032ef",
   "lastOpenFiles": [
+    "windows/windows.md",
+    "linux/linux.md",
+    "README.md",
+    "windows/vmachine-creation/vmachine-network-creation.md",
+    "linux/debian/services/kea/kea.md",
+    "linux/debian/services/kea/kea-installation.md",
+    "linux/debian/services/kea/kea-basic-conf.md",
+    "linux/debian/services/kea/kea-ipv4.md",
+    "todo.md",
     "windows/active-directory/active-directory.md",
     "windows/checks-ad-dns-client/outputs/check-dns.md",
     "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-012.png",
     "windows/checks-ad-dns-client/outputs/img/check-dns/check-dns-01.png",
-    "windows/windows.md",
     "windows/basic-configuration/basic-configuration.md",
     "windows/checks-ad-dns-client/checks-ad-dns-client.md",
     "windows/installing-services/installing-services.md",
@@ -219,25 +261,18 @@
     "windows/checks-ad-dns-client/outputs/check-active-directory.md",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-02.png",
     "windows/checks-ad-dns-client/outputs/img/check-active-directory/check-active-directory-01.png",
-    "todo.md",
     "windows/basic-configuration/client-network-staticIp.png",
     "windows/vmachine-installation/vmachine-installation.md",
     "windows/vmachine-installation/img/server1/server1-installation-after.png",
     "windows/vmachine-installation/img/server1/server1-installation-08.png",
     "windows/vmachine-installation/img/server1/server1-installation-09.png",
     "windows/vmachine-installation/img/server1/server1-installation-10.png",
-    "windows/vmachine-creation/vmachine-network-creation.md",
     "linux/debian/services/kea/kea-ha.md",
-    "linux/linux.md",
-    "linux/debian/services/kea/kea.md",
     "linux/debian/services/kea/kea-dhcp-dns.md",
-    "linux/debian/services/kea/kea-ipv4.md",
-    "linux/debian/services/kea/kea-installation.md",
     "linux/vbox/networks-creation/networks-creation.md",
     "linux/vbox/networks-creation/internal-networks.md",
     "linux/vbox/networks-creation/nat-networks.md",
     "linux/debian/services/dns/dns.md",
-    "linux/debian/services/kea/kea-basic-conf.md",
     "linux/debian/services/configuration-files/etc/kea",
     "linux/debian/services/configuration-files/etc",
     "linux/debian/services/configuration-files",

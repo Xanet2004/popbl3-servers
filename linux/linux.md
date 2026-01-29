@@ -1,6 +1,8 @@
-This document explains how to apply several changes based on the [in-class activity](https://docs.google.com/document/d/1W8xz1h4jfhF81_PzgodD-vRKpa6XWWj4LW81x_kvXgE/edit?tab=t.0).
+# Linux
 
-Asked changes are the followings:
+In this project, a Linux-based server environment is deployed and configured using virtual machines, covering basic system configuration, network services installation, and validation of the implemented services.
+
+We need to make the next changes based on the [in-class activity](https://docs.google.com/document/d/1W8xz1h4jfhF81_PzgodD-vRKpa6XWWj4LW81x_kvXgE/edit?tab=t.0).
 
 | Before (activity)     | After (POPBL3)             |
 | --------------------- | -------------------------- |
@@ -11,7 +13,7 @@ Asked changes are the followings:
 # Index
 - VBox
 	- [Machines Creation](/linux/vbox/machines-creation/machines-creation.md)
-	- [Networks Creation](/linux/vbox/networks-creation/networks-creation.md) ---
+	- [Networks Creation](/linux/vbox/networks-creation/networks-creation.md)
 		- [NAT networks](/linux/vbox/networks-creation/nat-networks.md)
 		- [Internal networks](/linux/vbox/networks-creation/internal-networks.md)
 	- [Machines Installation](/linux/debian/machines-installation/machines-installation.md)
@@ -22,10 +24,10 @@ Asked changes are the followings:
 	- [DHCP](/linux/debian/services/isc-dhcp/isc-dhcp.md)
 	- [DNS](/linux/debian/services/dns/dns.md)
 	- [KEA](/linux/debian/services/kea/kea.md)
-		- [KEA installation](/linux/debian/services/kea/kea-installation.md) ---
-		- [KEA IPv4 Configuration](/linux/debian/services/kea/kea-ipv4.md) ---
-		- [KEA High Availabity](/linux/debian/services/kea/kea-ha.md) ---
-		- [KEA DDNS](/linux/debian/services/kea/kea-dhcp-dns.md) ---
+		- [KEA installation](/linux/debian/services/kea/kea-installation.md)
+		- [KEA IPv4 Configuration](/linux/debian/services/kea/kea-ipv4.md)
+		- [KEA High Availabity](/linux/debian/services/kea/kea-ha.md)
+		- [KEA DDNS](/linux/debian/services/kea/kea-dhcp-dns.md)
 
 # Project requisites
 ## Network

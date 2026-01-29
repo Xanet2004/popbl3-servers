@@ -1,3 +1,6 @@
+# Windows
+
+In this project, a Windows Server infrastructure is designed and implemented using virtual machines, focusing on the installation and configuration of Active Directory, DNS services, and domain management within a client–server environment.
 # Index
 - [VMachine and Network creation](/windows/vmachine-creation/vmachine-network-creation.md)
 - [VMachine installation](/windows/vmachine-installation/vmachine-installation.md)

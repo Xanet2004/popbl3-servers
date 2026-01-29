@@ -11,7 +11,7 @@
 - [/etc/kea/kea-dhcp-ddns.conf](/linux/debian/services/configuration-files/etc/kea/kea-dhcp-ddns.conf.md) - DDNS
 
 > Note
-> Kea uses json for the configuration files.
+> Kea uses JSON for the configuration files.
 
 # Official Documentation
 
