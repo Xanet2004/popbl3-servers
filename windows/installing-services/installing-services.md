@@ -15,6 +15,11 @@ Add-WindowsFeature -Name "ad-domain-services" -IncludeAllSubFeature -IncludeMana
 # True    No             Success        {Active Directory Domain Services, Group P...
 ```
 
+```powershell title="servers - gpmc status"
+# Active Directory Domain Services (AD DS)
+Get-Service -Name NTDS | Select-Object Status, Name, DisplayName
+```
+
 # DNS
 
 ```powershell title="servers - dns installation"
@@ -22,6 +27,11 @@ Add-WindowsFeature -Name "dns" -IncludeAllSubFeature -IncludeManagementTools
 # Success Restart Needed Exit Code      Feature Result
 # ------- -------------- ---------      --------------
 # True    No             Success        {DNS Server, DNS Server Tools}
+```
+
+```powershell title="servers - gpmc status"
+# DNS Server
+Get-Service -Name DNS | Select-Object Status, Name, DisplayName
 ```
 
 # GPMC
@@ -33,6 +43,10 @@ Add-WindowsFeature -Name "gpmc" -IncludeAllSubFeature -IncludeManagementTools
 # True    No             NoChangeNeeded {}
 ```
 
+```powershell title="servers - gpmc status"
+# Group Policy Management Console (GPMC) - feature installed (not a service)
+Get-WindowsFeature -Name GPMC | Select-Object DisplayName, InstallState
+```
 # Snapshot
 
 ```powershell title="stop computers"
